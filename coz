@@ -79,9 +79,19 @@ def _coz_container_run(args):
 
     # 2. hostctl 바이너리 찾기
     coz_prefix = dirname(realpath(sys.argv[0]))
-    hostctl_bin = os.path.join(coz_prefix, 'hostctl', 'hostctl')
-    if not os.path.exists(hostctl_bin):
-        sys.stderr.write(f'error: hostctl binary not found at {hostctl_bin}\n')
+    candidate_bins = [
+        os.path.join(coz_prefix, 'hostctl_cpp', 'hostctl_cpp'),
+        os.path.join(coz_prefix, 'hostctl', 'hostctl'),
+    ]
+
+    hostctl_bin = None
+    for b in candidate_bins:
+        if os.path.exists(b):
+            hostctl_bin = b
+            break
+
+    if not hostctl_bin:
+        sys.stderr.write('error: hostctl binary not found\n')
         sys.exit(1)
 
     # 3. hostctl 실행 커맨드 생성

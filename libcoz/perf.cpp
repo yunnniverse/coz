@@ -44,7 +44,8 @@ long perf_event_open(struct perf_event_attr *hw_event, pid_t pid, int cpu, int g
 perf_event::perf_event() {}
 
 // Open a perf_event file and map it (if sampling is enabled)
-perf_event::perf_event(struct perf_event_attr& pe, pid_t pid, int cpu) :
+perf_event::perf_event(struct perf_event_attr& pe, pid_t pid, int cpu,
+                       unsigned long flags) :
     _sample_type(pe.sample_type), _read_format(pe.read_format) {
 
   // Set some mandatory fields
@@ -52,7 +53,7 @@ perf_event::perf_event(struct perf_event_attr& pe, pid_t pid, int cpu) :
   pe.disabled = 1;
 
   // Open the file
-  _fd = perf_event_open(&pe, pid, cpu, -1, 0);
+  _fd = perf_event_open(&pe, pid, cpu, -1, flags);
   if (_fd == -1) {
       std::string path = "/proc/sys/kernel/perf_event_paranoid";
 

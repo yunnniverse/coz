@@ -37,7 +37,8 @@ public:
   /// Default constructor
   perf_event();
   /// Open a perf_event file using the given options structure
-  perf_event(struct perf_event_attr& pe, pid_t pid = 0, int cpu = -1);
+  perf_event(struct perf_event_attr& pe, pid_t pid = 0, int cpu = -1,
+             unsigned long flags = 0);
   /// Move constructor
   perf_event(perf_event&& other);
   
@@ -55,9 +56,12 @@ public:
   
   /// Stop counting events
   void stop();
-  
+
   /// Close the perf_event file and unmap the ring buffer
   void close();
+
+  /// Access underlying file descriptor
+  long get_fd() const { return _fd; }
   
   /// Configure the perf_event file to deliver a signal when samples are ready to be processed
   void set_ready_signal(int sig);
