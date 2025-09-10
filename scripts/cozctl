@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PIDFILE=/var/run/hostctl_cpp.pid
+LOGFILE=/var/log/coz.log
+
+usage() {
+  cat <<EOF
+Usage: cozctl <start|stop|status|logs> [options]
+
+Subcommands:
+  start   Start profiling via 'coz container-run'.
+  stop    Send SIGINT to active hostctl_cpp.
+  status  Show running hostctl_cpp processes.
+  logs    Tail recent logs from ${LOGFILE}.
+
+Start options:
+  --target-pod NAMESPACE/POD      Explicit pod target.
+  --selector   NAMESPACE LABEL    Select first pod with label on this node.
+  --period MS                     Sampling period (default 5).
+  --speedup FLOAT                 Virtual speedup (default 0.25).
+  --freeze-mode MODE              freezer|cpu-weight (default freezer).
+  --exclude NS1,NS2               Namespaces to exclude from freezing.
+
+Examples:
+  cozctl start --target-pod default/my-pod --period 5 --speedup 0.25
+  cozctl start --selector default app=my-app
+  cozctl stop
+  cozctl status
+  cozctl logs
+EOF
+}
+
+node_name() {
+  # Expect NODE_NAME env via Downward API; fallback from kubelet host file if needed
+  if [[ -n "${NODE_NAME:-}" ]]; then echo "$NODE_NAME"; else hostname; fi
+}
+
+select_pod_on_node() {
+  local ns="$1" sel="$2" node
+  node=$(node_name)
+  kubectl get pods -n "$ns" -l "$sel" --field-selector spec.nodeName=${node} \
+    -o jsonpath='{.items[0].metadata.name}'
+}
+
+start_cmd() {
+  local target_pod="" sel_ns="" sel_label="" period="5" speedup="0.25" freeze_mode="freezer" exclude=""
+  local passthrough=()
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --target-pod) target_pod="$2"; shift 2;;
+      --selector) sel_ns="$2"; sel_label="$3"; shift 3;;
+      --period) period="$2"; shift 2;;
+      --speedup) speedup="$2"; shift 2;;
+      --freeze-mode) freeze_mode="$2"; shift 2;;
+      --exclude) exclude="$2"; shift 2;;
+      -h|--help) usage; exit 0;;
+      *) passthrough+=("$1"); shift;;
+    esac
+  done
+
+  if [[ -z "$target_pod" && -n "$sel_ns" && -n "$sel_label" ]]; then
+    pod=$(select_pod_on_node "$sel_ns" "$sel_label") || true
+    if [[ -z "$pod" ]]; then
+      echo "No pod found on node $(node_name) with selector $sel_ns $sel_label" >&2
+      exit 1
+    fi
+    target_pod="$sel_ns/$pod"
+  fi
+
+  if [[ -z "$target_pod" ]]; then
+    echo "Need --target-pod NAMESPACE/POD or --selector NAMESPACE LABEL" >&2
+    exit 1
+  fi
+
+  echo "[cozctl] starting: target=$target_pod period=${period}ms speedup=${speedup} mode=${freeze_mode} exclude=${exclude}"
+  mkdir -p "$(dirname "$LOGFILE")" "$(dirname "$PIDFILE")"
+  # Run in background; capture hostctl_cpp pid
+  nohup coz container-run \
+    --target-pod "$target_pod" \
+    --period "$period" \
+    --speedup "$speedup" \
+    --freeze-mode "$freeze_mode" \
+    ${exclude:+--exclude "$exclude"} \
+    "${passthrough[@]}" \
+    >"$LOGFILE" 2>&1 &
+
+  # Wait briefly, then record the most recent hostctl_cpp pid
+  sleep 0.5
+  if pid=$(pgrep -n hostctl_cpp); then
+    echo "$pid" > "$PIDFILE"
+    echo "[cozctl] hostctl_cpp pid=$pid"
+  else
+    echo "[cozctl] failed to find hostctl_cpp pid; check logs: $LOGFILE" >&2
+    exit 1
+  fi
+}
+
+stop_cmd() {
+  if [[ -f "$PIDFILE" ]]; then
+    pid=$(cat "$PIDFILE" || true)
+    if [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null; then
+      kill -INT "$pid"
+      echo "[cozctl] sent SIGINT to hostctl_cpp pid=$pid"
+      return
+    fi
+  fi
+  # fallback: try any hostctl_cpp
+  if pid=$(pgrep hostctl_cpp | head -n1); then
+    kill -INT "$pid"
+    echo "[cozctl] sent SIGINT to hostctl_cpp pid=$pid"
+  else
+    echo "[cozctl] no running hostctl_cpp found"
+  fi
+}
+
+status_cmd() {
+  if pgrep -a hostctl_cpp >/dev/null; then
+    pgrep -a hostctl_cpp
+  else
+    echo "not running"
+  fi
+}
+
+logs_cmd() {
+  if [[ -f "$LOGFILE" ]]; then
+    tail -n 200 "$LOGFILE"
+  else
+    echo "no logs yet at $LOGFILE"
+  fi
+}
+
+main() {
+  if [[ $# -lt 1 ]]; then usage; exit 1; fi
+  case "$1" in
+    start) shift; start_cmd "$@";;
+    stop) shift; stop_cmd;;
+    status) shift; status_cmd;;
+    logs) shift; logs_cmd;;
+    -h|--help) usage;;
+    *) usage; exit 1;;
+  esac
+}
+
+main "$@"
+

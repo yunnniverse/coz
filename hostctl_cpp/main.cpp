@@ -171,7 +171,7 @@ discover_other_pods(const cgroup& tgt, const std::string& exclude /* 예: ns/pod
 
 int main(int argc, char** argv) {
     printf("In >> main\n");
-    std::cerr << "[DBG] my pid=" << getpid() << " tid=" << gettid() << '\n';
+    std::cerr << "`DBG] my pid=" << getpid() << " tid=" << gettid() << '\n';
 
     const char* target_pod = nullptr;
     const char* freeze_mode = "freezer";

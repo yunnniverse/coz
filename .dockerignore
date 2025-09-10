@@ -1,0 +1,25 @@
+# Ignore VCS
+.git
+.github
+
+# Build artifacts
+build
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+**/CMakeFiles/**
+**/CMakeCache.txt
+**/cmake_install.cmake
+
+# IDE and local configs
+.vscode
+*.swp
+*.swo
+*.DS_Store
+
+# Large benchmark data / outputs
+benchmarks/**/CMakeFiles/**
+benchmarks/**/CMakeCache.txt
+benchmarks/**/cmake_install.cmake
+benchmarks/**/build
+

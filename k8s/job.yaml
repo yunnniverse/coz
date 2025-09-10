@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: coz-run
+  namespace: coz-profiler
+spec:
+  template:
+    spec:
+      serviceAccountName: coz
+      restartPolicy: Never
+      hostPID: true
+      containers:
+        - name: coz
+          image: yunniverse/mcoz:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - container-run
+            - --target-pod
+            - default/my-pod
+            - --freeze-mode
+            - freezer
+            - --period
+            - "5"   # milliseconds
+            - --speedup
+            - "0.25"
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: sys-fs-cgroup
+              mountPath: /sys/fs/cgroup
+              mountPropagation: HostToContainer
+              readOnly: false
+      volumes:
+        - name: sys-fs-cgroup
+          hostPath:
+            path: /sys/fs/cgroup
+            type: Directory
+  backoffLimit: 0
+
