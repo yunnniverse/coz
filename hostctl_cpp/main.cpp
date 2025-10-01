@@ -143,7 +143,6 @@ static std::vector<cgroup>
 discover_other_pods(const cgroup& tgt, const std::string& exclude /* 예: ns/pod */)
 {
     std::vector<cgroup> out;
-    std::cout << "In >> discover_other_pods\n";
 
     // DEBUG : 오잉 이거 empty다
     std::cout << "target : " << exclude << std::endl;
@@ -233,8 +232,6 @@ discover_other_pods(const cgroup& tgt, const std::string& exclude /* 예: ns/pod
     }
     pclose(fp);
 
-    // std::cout << "discover_other_pods: " << out.size() << " victims\n";
-    // std::cout << "Out >> discover_other_pods\n";
     return out;
 }
 
@@ -254,8 +251,8 @@ static std::string get_pod_node(const std::string& ns, const std::string& pod) {
 }
 
 int main(int argc, char** argv) {
-    printf("In >> main\n");
     std::cerr << "`DBG] my pid=" << getpid() << " tid=" << gettid() << '\n';
+    std::cerr << "[coz-daemon] hostctl_cpp starting" << std::endl;
 
     const char* target_pod = nullptr;
     double speedup = 0.1;
@@ -305,8 +302,31 @@ int main(int argc, char** argv) {
             // Same node (or unknown): do full perf sampling
             std::cerr << "[INFO] target on same node; running perf" << std::endl;
             cgroup tgt = resolve_target_cgroup(tp);
-            std::cout << "target cgroup path : " << tgt.path << std::endl;
-            int cg_fd = open(tgt.path.c_str(), O_DIRECTORY);
+            // On cgroup v1, perf_event controller requires an fd from the perf_event hierarchy.
+            // If the discovered path is from another controller (e.g., freezer), remap to perf_event when available.
+            std::string tgt_path = tgt.path;
+            bool cgv2 = (access("/sys/fs/cgroup/cgroup.controllers", F_OK) == 0);
+            if (!cgv2 && tgt_path.rfind("/sys/fs/cgroup/perf_event", 0) != 0) {
+                const std::string base = "/sys/fs/cgroup";
+                if (tgt_path.rfind(base + "/", 0) == 0) {
+                    size_t next = tgt_path.find('/', base.size() + 1);
+                    if (next != std::string::npos) {
+                        std::string suffix = tgt_path.substr(next); // includes slash
+                        std::string alt = base + "/perf_event" + suffix;
+                        if (access(alt.c_str(), F_OK) == 0) {
+                            std::cerr << "[INFO] cgroup v1: remapped target from " << tgt_path
+                                      << " to " << alt << "\n";
+                            tgt_path = alt;
+                        } else {
+                            std::cerr << "[WARN] cgroup v1: perf_event hierarchy path missing at " << alt
+                                      << "; perf_event_open may fail. Consider mounting it: \n"
+                                      << "       mount -t cgroup -o perf_event cgroup /sys/fs/cgroup/perf_event\n";
+                        }
+                    }
+                }
+            }
+            std::cout << "target cgroup path : " << tgt_path << std::endl;
+            int cg_fd = open(tgt_path.c_str(), O_DIRECTORY);
             if(cg_fd < 0) { perror("open cgroup"); return 1; }
             std::cout << "cg_fd : " << cg_fd << std::endl;
             auto others = discover_other_pods(tgt, tp);

@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Simple sidecar to coordinate GlobalDelay CR updates and distribution.
+# - Watches the CR value (polling) and writes it to a shared file
+# - Reads local increments from a FIFO and patches the CR by the delta
+
+STATE_DIR=${MCOZ_STATE_DIR:-/var/run/mcoz}
+FIFO="$STATE_DIR/delta.fifo"
+CRD_FILE="$STATE_DIR/crd_value"
+NAME=${GLOBAL_DELAY_NAME:-global-delay}
+GROUP=${KUBE_GROUP:-example.com}
+VERSION=${KUBE_VERSION:-v1alpha1}
+PLURAL=${KUBE_PLURAL:-globaldelays}
+NS=${CR_NAMESPACE:-}
+
+mkdir -p "$STATE_DIR"
+touch "$CRD_FILE"
+if [[ ! -p "$FIFO" ]]; then rm -f "$FIFO" || true; mkfifo "$FIFO"; fi
+
+res_path() {
+  if [[ -n "$NS" && "$NS" != "-" ]]; then
+    echo "/apis/$GROUP/$VERSION/namespaces/$NS/$PLURAL/$NAME"
+  else
+    echo "/apis/$GROUP/$VERSION/$PLURAL/$NAME"
+  fi
+}
+
+get_value() {
+  if [[ -n "$NS" && "$NS" != "-" ]]; then
+    kubectl get "$PLURAL.$GROUP" "$NAME" -n "$NS" -o jsonpath='{.spec.value}' || true
+  else
+    kubectl get "$PLURAL.$GROUP" "$NAME" -o jsonpath='{.spec.value}' || true
+  fi
+}
+
+patch_value() {
+  local newv="$1"
+  local patch
+  patch=$(jq -c --argjson v "$newv" '{spec:{value:$v}}' <<<"{}" 2>/dev/null || echo "{\"spec\":{\"value\":$newv}}")
+  if [[ -n "$NS" && "$NS" != "-" ]]; then
+    kubectl patch "$PLURAL.$GROUP" "$NAME" -n "$NS" --type merge -p "$patch" >/dev/null
+  else
+    kubectl patch "$PLURAL.$GROUP" "$NAME" --type merge -p "$patch" >/dev/null
+  fi
+}
+
+# Watcher loop (polling)
+watch_loop() {
+  while true; do
+    v=$(get_value)
+    if [[ "$v" =~ ^[0-9]+$ ]]; then echo "$v" >"$CRD_FILE"; fi
+    sleep 0.2
+  done
+}
+
+# Increment loop (reads deltas and applies to CR)
+inc_loop() {
+  # Reopen FIFO after writer closes (EOF)
+  while true; do
+    while read -r delta; do
+      [[ "$delta" =~ ^[0-9]+$ ]] || continue
+      cur=$(get_value)
+      cur=${cur:-0}
+      if [[ ! "$cur" =~ ^[0-9]+$ ]]; then cur=0; fi
+      next=$((cur + delta))
+      patch_value "$next" || true
+    done <"$FIFO"
+    # Writer closed; brief pause then reopen
+    sleep 0.1
+  done
+}
+
+echo "[sidecar] GlobalDelay watcher running for $GROUP/$VERSION $PLURAL/$NAME"
+watch_loop &
+inc_loop &
+wait
+exit 0

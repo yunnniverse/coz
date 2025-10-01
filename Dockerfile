@@ -62,6 +62,8 @@ RUN curl -fsSL -o /usr/local/bin/kubectl \
 COPY --from=build /opt/mcoz /opt/mcoz
 COPY scripts/cozctl /usr/local/bin/cozctl
 RUN chmod +x /usr/local/bin/cozctl
+COPY scripts/globaldelay_sidecar /usr/local/bin/globaldelay_sidecar
+RUN chmod +x /usr/local/bin/globaldelay_sidecar
 
 ENV PATH="/opt/mcoz/bin:/usr/local/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/opt/mcoz/lib:/opt/mcoz/lib64:${LD_LIBRARY_PATH}"

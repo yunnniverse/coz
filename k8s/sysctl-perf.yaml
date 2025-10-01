@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: mcoz-sysctl-perf
+  namespace: kube-system
+  labels: { app: mcoz-sysctl-perf }
+spec:
+  selector:
+    matchLabels: { app: mcoz-sysctl-perf }
+  template:
+    metadata:
+      labels: { app: mcoz-sysctl-perf }
+    spec:
+      hostPID: true
+      tolerations:
+      - operator: "Exists"
+      containers:
+      - name: sysctl
+        image: busybox:1.36
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        command: ["sh","-c"]
+        args:
+          - |
+            set -e
+            echo "[sysctl-perf] applying runtime sysctls"
+            sysctl -w kernel.perf_event_paranoid=1 || true
+            sysctl -w kernel.kptr_restrict=0 || true
+            echo "[sysctl-perf] writing /etc/sysctl.d/60-perf.conf on host"
+            cat > /host-etc-sysctl/60-perf.conf <<'EOF'
+            # mcoz perf requirements
+            kernel.perf_event_paranoid=1
+            kernel.kptr_restrict=0
+            EOF
+            echo "[sysctl-perf] done; sleeping"
+            sleep infinity
+        volumeMounts:
+        - name: host-etc-sysctl
+          mountPath: /host-etc-sysctl
+      volumes:
+      - name: host-etc-sysctl
+        hostPath:
+          path: /etc/sysctl.d
+          type: DirectoryOrCreate
+

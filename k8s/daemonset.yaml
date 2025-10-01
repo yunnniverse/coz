@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: coz
-  namespace: default
+  namespace: mcoz-system
   labels:
     app: coz
 spec:
@@ -16,36 +16,79 @@ spec:
     spec:
       serviceAccountName: coz
       hostPID: true
+      # Ensure kernel perf sysctls are permissive on the node
+      initContainers:
+        # - name: mount-perf-event
+        #   image: busybox:1.36
+        #   securityContext:
+        #     privileged: true
+        #   command: ["sh","-c"]
+        #   args:
+        #     - |
+        #       set -e
+        #       # Skip on cgroup v2
+        #       if [ -f /sys/fs/cgroup/cgroup.controllers ]; then
+        #         echo "[coz-daemon] cgroup v2 detected; skipping perf_event mount"
+        #         exit 0
+        #       fi
+        #       # If already mounted, nothing to do
+        #       if mountpoint -q /sys/fs/cgroup/perf_event; then
+        #         echo "[coz-daemon] perf_event already mounted"
+        #         exit 0
+        #       fi
+        #       echo "[coz-daemon] mounting perf_event controller on host"
+        #       nsenter --mount=/hostproc/1/ns/mnt -- sh -lc '
+        #         mkdir -p /sys/fs/cgroup/perf_event || true;
+        #         mount -t cgroup -o perf_event cgroup /sys/fs/cgroup/perf_event || true;
+        #         mountpoint -q /sys/fs/cgroup/perf_event && echo "[host] perf_event mounted" || echo "[host] mount failed (maybe unsupported)";
+        #       '
+        #   volumeMounts:
+        #     - name: host-proc
+        #       mountPath: /hostproc
+        # - name: sysctl
+        #   image: busybox:1.36
+        #   securityContext:
+        #     privileged: true
+        #   command: ["sh","-c"]
+        #   args:
+        #     - |
+        #       echo "[coz-daemon] tuning sysctls: kernel.perf_event_paranoid=1, kernel.kptr_restrict=0";
+        #       sysctl -w kernel.perf_event_paranoid=1 || true;
+        #       sysctl -w kernel.kptr_restrict=0 || true;
+        #       # best-effort; continue regardless
       containers:
         - name: coz
-          image: yunniverse/mcoz:1.4
+          image: yunniverse/mcoz:2.5
           imagePullPolicy: IfNotPresent
           # Wait for a start signal via ConfigMap, then start with uniform arguments
           command: ["bash","-lc"]
           args:
             - |
-              echo "[coz-daemon] Waiting for start signal (ConfigMap default/coz-sync: data.start == 'go')"
+              echo "[coz-daemon] Waiting for start signal (ConfigMap $NAMESPACE/coz-sync: data.start == 'go')"
               # Wait until the ConfigMap exists and has start=go
               while true; do
-                start=$(kubectl get cm coz-sync -n default -o jsonpath='{.data.start}' 2>/dev/null || true)
+                start=$(kubectl get cm coz-sync -n "$NAMESPACE" -o jsonpath='{.data.start}' 2>/dev/null || true)
                 if [[ "$start" == "go" ]]; then break; fi
                 sleep 1
               done
               # Read parameters from the ConfigMap (if set); otherwise fall back to environment defaults
-              cmval() { kubectl get cm coz-sync -n default -o jsonpath="{.data.$1}" 2>/dev/null || true; }
+              cmval() { kubectl get cm coz-sync -n "$NAMESPACE" -o jsonpath="{.data.$1}" 2>/dev/null || true; }
               TP=$(cmval targetPod); SP=$(cmval speedup)
-              TP=${TP:-$TARGET_POD}
+              # Default to env TARGET_POD, then to "$NAMESPACE/my-pod"
+              TP=${TP:-${TARGET_POD:-$NAMESPACE/my-pod}}
               SP=${SP:-$SPEEDUP}
               echo "[coz-daemon] Starting profiling on $(hostname): targetPod='${TP}' speedup='${SP}'"
               # Run in the foreground so the container stays alive while profiling.
               exec coz container-run ${TP:+--target-pod "$TP"} --speedup "$SP"
           env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-            - name: MCOZ_STATE_DIR
-              value: "/var/run/mcoz"
             - name: GLOBAL_DELAY_NAME
               value: "global-delay"
             - name: KUBE_GROUP
@@ -55,53 +98,50 @@ spec:
             - name: KUBE_PLURAL
               value: "globaldelays"
             # Default parameters: can be overridden by values in the coz-sync ConfigMap.
-            - name: TARGET_POD
-              value: "default/my-pod"
             - name: SPEEDUP
               value: "0.25"
+          livenessProbe:
+            exec:
+              command: ["bash","-lc","pgrep -x hostctl_cpp >/dev/null"]
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command: ["bash","-lc","test -e /dev/mcoz"]
+            initialDelaySeconds: 5
+            periodSeconds: 5
           securityContext:
             privileged: true
-            # If your cluster supports fine-grained caps, you can try enabling instead of privileged
-            # capabilities:
-            #   add: ["SYS_ADMIN", "PERFMON"]
+            capabilities:
+              add: ["SYS_ADMIN","SYS_PTRACE","SYS_NICE","PERFMON"]
+          # If your cluster supports fine-grained caps, you can try enabling instead of privileged
+          # capabilities:
+          #   add: ["SYS_ADMIN", "PERFMON"]
           volumeMounts:
             - name: sys-fs-cgroup
               mountPath: /sys/fs/cgroup
               mountPropagation: HostToContainer
               readOnly: false
-            - name: mcoz-state
-              mountPath: /var/run/mcoz
             # Optional: mount kernel debug fs if needed for perf
             # - name: sys-kernel-debug
             #   mountPath: /sys/kernel/debug
             #   readOnly: true
-        - name: globaldelay-sidecar
-          image: yunniverse/mcoz:1.4
-          imagePullPolicy: IfNotPresent
-          command: ["bash","-lc"]
-          args: ["exec globaldelay_sidecar"]
-          env:
-            - name: MCOZ_STATE_DIR
-              value: "/var/run/mcoz"
-            - name: GLOBAL_DELAY_NAME
-              value: "global-delay"
-            - name: KUBE_GROUP
-              value: "example.com"
-            - name: KUBE_VERSION
-              value: "v1alpha1"
-            - name: KUBE_PLURAL
-              value: "globaldelays"
-          volumeMounts:
-            - name: mcoz-state
-              mountPath: /var/run/mcoz
+            - name: mcozdev
+              mountPath: /dev/mcoz
       volumes:
+        - name: host-proc
+          hostPath:
+            path: /proc
+            type: Directory
         - name: sys-fs-cgroup
           hostPath:
             path: /sys/fs/cgroup
             type: Directory
-        - name: mcoz-state
-          emptyDir: {}
         # - name: sys-kernel-debug
         #   hostPath:
         #     path: /sys/kernel/debug
         #     type: Directory
+        - name: mcozdev
+          hostPath:
+            path: /dev/mcoz
+            type: CharDevice

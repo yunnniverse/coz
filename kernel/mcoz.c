@@ -11,8 +11,11 @@
 #include <asm/processor.h> /* cpu_relax */
 #include "uapi/mcoz_ioctl.h"
 
+/* Module version for visibility and rollout control */
+#define MCOZ_VERSION "3.0.0"
+
 /* 안전 상한: 처음엔 보수적으로. 필요시 조정 */
-#define MCOZ_MAX_HOG_NS (1000000ULL) /* 1ms */
+// #define MCOZ_MAX_HOG_NS (1000000ULL) /* 1ms */
 #define MCOZ_DEV_MODE   0666         /* 운영에선 0660 + group 권장 */
 
 static inline void mcoz_hog_on_this_cpu(u64 ns, bool block_bh)
@@ -46,7 +49,7 @@ static long mcoz_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
     if (copy_from_user(&req, (void __user *)arg, sizeof(req)))
         return -EFAULT;
 
-    if (!req.ns || req.ns > MCOZ_MAX_HOG_NS)
+    if (!req.ns)  // || req.ns > MCOZ_MAX_HOG_NS)
         return -EINVAL;
 
     /* 과도 사용 방지: 권한 요구(컨테이너엔 SYS_NICE 부여 권장) */
@@ -74,10 +77,12 @@ static struct miscdevice mcoz_dev = {
 
 static int __init mcoz_init(void)
 {
+    pr_info("mcoz: init version %s (no ns upper limit)\n", MCOZ_VERSION);
     return misc_register(&mcoz_dev);
 }
 static void __exit mcoz_exit(void)
 {
+    pr_info("mcoz: exit version %s\n", MCOZ_VERSION);
     misc_deregister(&mcoz_dev);
 }
 module_init(mcoz_init);
@@ -86,3 +91,4 @@ module_exit(mcoz_exit);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("you");
 MODULE_DESCRIPTION("Per-CPU busy delay via ioctl");
+MODULE_VERSION(MCOZ_VERSION);

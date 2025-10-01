@@ -1,0 +1,7 @@
+apiVersion: example.com/v1alpha1
+kind: GlobalDelay
+metadata:
+  name: global-delay
+spec:
+  value: 0
+  version: 0

@@ -1,0 +1,182 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: front }
+  template:
+    metadata:
+      labels: { app: front }
+    spec:
+      containers:
+        - name: front
+          image: yunniverse/demo-numberchain:0.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ROLE
+              value: "front"
+            - name: NEXT_SERVICE
+              value: "one"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front
+  namespace: demo
+spec:
+  selector: { app: front }
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: one
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: one }
+  template:
+    metadata:
+      labels: { app: one }
+    spec:
+      containers:
+        - name: one
+          image: yunniverse/demo-numberchain:0.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ROLE
+              value: "one"
+            - name: NEXT_SERVICE
+              value: "two"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: one
+  namespace: demo
+spec:
+  selector: { app: one }
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: two
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: two }
+  template:
+    metadata:
+      labels: { app: two }
+    spec:
+      containers:
+        - name: two
+          image: yunniverse/demo-numberchain:0.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ROLE
+              value: "two"
+            - name: NEXT_SERVICE
+              value: "three"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: two
+  namespace: demo
+spec:
+  selector: { app: two }
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: three
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: three }
+  template:
+    metadata:
+      labels: { app: three }
+    spec:
+      containers:
+        - name: three
+          image: yunniverse/demo-numberchain:0.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ROLE
+              value: "three"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /healthz, port: 8080 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: three
+  namespace: demo
+spec:
+  selector: { app: three }
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

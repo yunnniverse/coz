@@ -10,7 +10,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: trigger
-          image: yunniverse/mcoz:2.3
+          image: yunniverse/mcoz:2.5 ## 뭐가 문제진 모르겠는데.. 절대 바꾸지 말것.. 지금이.. 조하..
           imagePullPolicy: IfNotPresent
           command: ["bash","-lc"]
           args:
@@ -33,7 +33,7 @@ spec:
                   fieldPath: metadata.namespace
             # Set parameters here; all DaemonSet pods read them from the ConfigMap.
             - name: TARGET_POD
-              value: "default/busybox-678f59746f-8zsdr"
+              value: "default/busybox-8475b6d8cd-ljlnf"
             - name: SPEEDUP
               value: "0.1"
   backoffLimit: 0
