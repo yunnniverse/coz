@@ -18,16 +18,47 @@ spec:
       hostPID: true
       containers:
         - name: coz
-          image: yunniverse/mcoz:1.0
+          image: yunniverse/mcoz:1.4
           imagePullPolicy: IfNotPresent
-          # Container idles; run commands on demand via kubectl exec and cozctl
+          # Wait for a start signal via ConfigMap, then start with uniform arguments
           command: ["bash","-lc"]
-          args: ["exec tail -f /dev/null"]
+          args:
+            - |
+              echo "[coz-daemon] Waiting for start signal (ConfigMap default/coz-sync: data.start == 'go')"
+              # Wait until the ConfigMap exists and has start=go
+              while true; do
+                start=$(kubectl get cm coz-sync -n default -o jsonpath='{.data.start}' 2>/dev/null || true)
+                if [[ "$start" == "go" ]]; then break; fi
+                sleep 1
+              done
+              # Read parameters from the ConfigMap (if set); otherwise fall back to environment defaults
+              cmval() { kubectl get cm coz-sync -n default -o jsonpath="{.data.$1}" 2>/dev/null || true; }
+              TP=$(cmval targetPod); SP=$(cmval speedup)
+              TP=${TP:-$TARGET_POD}
+              SP=${SP:-$SPEEDUP}
+              echo "[coz-daemon] Starting profiling on $(hostname): targetPod='${TP}' speedup='${SP}'"
+              # Run in the foreground so the container stays alive while profiling.
+              exec coz container-run ${TP:+--target-pod "$TP"} --speedup "$SP"
           env:
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
+            - name: MCOZ_STATE_DIR
+              value: "/var/run/mcoz"
+            - name: GLOBAL_DELAY_NAME
+              value: "global-delay"
+            - name: KUBE_GROUP
+              value: "example.com"
+            - name: KUBE_VERSION
+              value: "v1alpha1"
+            - name: KUBE_PLURAL
+              value: "globaldelays"
+            # Default parameters: can be overridden by values in the coz-sync ConfigMap.
+            - name: TARGET_POD
+              value: "default/my-pod"
+            - name: SPEEDUP
+              value: "0.25"
           securityContext:
             privileged: true
             # If your cluster supports fine-grained caps, you can try enabling instead of privileged
@@ -38,15 +69,38 @@ spec:
               mountPath: /sys/fs/cgroup
               mountPropagation: HostToContainer
               readOnly: false
+            - name: mcoz-state
+              mountPath: /var/run/mcoz
             # Optional: mount kernel debug fs if needed for perf
             # - name: sys-kernel-debug
             #   mountPath: /sys/kernel/debug
             #   readOnly: true
+        - name: globaldelay-sidecar
+          image: yunniverse/mcoz:1.4
+          imagePullPolicy: IfNotPresent
+          command: ["bash","-lc"]
+          args: ["exec globaldelay_sidecar"]
+          env:
+            - name: MCOZ_STATE_DIR
+              value: "/var/run/mcoz"
+            - name: GLOBAL_DELAY_NAME
+              value: "global-delay"
+            - name: KUBE_GROUP
+              value: "example.com"
+            - name: KUBE_VERSION
+              value: "v1alpha1"
+            - name: KUBE_PLURAL
+              value: "globaldelays"
+          volumeMounts:
+            - name: mcoz-state
+              mountPath: /var/run/mcoz
       volumes:
         - name: sys-fs-cgroup
           hostPath:
             path: /sys/fs/cgroup
             type: Directory
+        - name: mcoz-state
+          emptyDir: {}
         # - name: sys-kernel-debug
         #   hostPath:
         #     path: /sys/kernel/debug

@@ -1,39 +1,39 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: coz-run
-  namespace: coz-profiler
+  name: coz-start-trigger
+  namespace: mcoz-system
 spec:
   template:
     spec:
       serviceAccountName: coz
       restartPolicy: Never
-      hostPID: true
       containers:
-        - name: coz
-          image: yunniverse/mcoz:latest
+        - name: trigger
+          image: yunniverse/mcoz:2.3
           imagePullPolicy: IfNotPresent
+          command: ["bash","-lc"]
           args:
-            - container-run
-            - --target-pod
-            - default/my-pod
-            - --freeze-mode
-            - freezer
-            - --period
-            - "5"   # milliseconds
-            - --speedup
-            - "0.25"
-          securityContext:
-            privileged: true
-          volumeMounts:
-            - name: sys-fs-cgroup
-              mountPath: /sys/fs/cgroup
-              mountPropagation: HostToContainer
-              readOnly: false
-      volumes:
-        - name: sys-fs-cgroup
-          hostPath:
-            path: /sys/fs/cgroup
-            type: Directory
+            - |
+              set -euo pipefail
+              if [[ -z "${TARGET_POD:-}" ]]; then
+                echo "[coz-trigger] ERROR: TARGET_POD env not set (expected format NAMESPACE/POD)" >&2
+                exit 1
+              fi
+              echo "[coz-trigger] Signaling start for DaemonSet pods via ConfigMap $NAMESPACE/coz-sync (targetPod='${TARGET_POD}')"
+              kubectl create configmap coz-sync -n "$NAMESPACE" \
+                --from-literal=start=go \
+                --from-literal=targetPod="${TARGET_POD}" \
+                --from-literal=speedup="${SPEEDUP}" \
+                --dry-run=client -o yaml | kubectl apply -f -
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            # Set parameters here; all DaemonSet pods read them from the ConfigMap.
+            - name: TARGET_POD
+              value: "default/busybox-678f59746f-8zsdr"
+            - name: SPEEDUP
+              value: "0.1"
   backoffLimit: 0
-

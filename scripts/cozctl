@@ -17,13 +17,10 @@ Subcommands:
 Start options:
   --target-pod NAMESPACE/POD      Explicit pod target.
   --selector   NAMESPACE LABEL    Select first pod with label on this node.
-  --period MS                     Sampling period (default 5).
   --speedup FLOAT                 Virtual speedup (default 0.25).
-  --freeze-mode MODE              freezer|cpu-weight (default freezer).
-  --exclude NS1,NS2               Namespaces to exclude from freezing.
 
 Examples:
-  cozctl start --target-pod default/my-pod --period 5 --speedup 0.25
+  cozctl start --target-pod default/my-pod --speedup 0.25
   cozctl start --selector default app=my-app
   cozctl stop
   cozctl status
@@ -44,16 +41,13 @@ select_pod_on_node() {
 }
 
 start_cmd() {
-  local target_pod="" sel_ns="" sel_label="" period="5" speedup="0.25" freeze_mode="freezer" exclude=""
+  local target_pod="" sel_ns="" sel_label="" speedup="0.25"
   local passthrough=()
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --target-pod) target_pod="$2"; shift 2;;
       --selector) sel_ns="$2"; sel_label="$3"; shift 3;;
-      --period) period="$2"; shift 2;;
       --speedup) speedup="$2"; shift 2;;
-      --freeze-mode) freeze_mode="$2"; shift 2;;
-      --exclude) exclude="$2"; shift 2;;
       -h|--help) usage; exit 0;;
       *) passthrough+=("$1"); shift;;
     esac
@@ -69,19 +63,27 @@ start_cmd() {
   fi
 
   if [[ -z "$target_pod" ]]; then
-    echo "Need --target-pod NAMESPACE/POD or --selector NAMESPACE LABEL" >&2
+    echo "Need --target-pod [NAMESPACE/]POD or --selector NAMESPACE LABEL" >&2
     exit 1
   fi
 
-  echo "[cozctl] starting: target=$target_pod period=${period}ms speedup=${speedup} mode=${freeze_mode} exclude=${exclude}"
+  # Normalize: allow POD only, prefix with our namespace or 'default'
+  if [[ "$target_pod" != */* ]]; then
+    ns=${NAMESPACE:-}
+    if [[ -z "$ns" ]]; then
+      # try current kubectl context namespace; fallback default
+      ns=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null || true)
+      ns=${ns:-default}
+    fi
+    target_pod="$ns/$target_pod"
+  fi
+
+  echo "[cozctl] starting: target=$target_pod speedup=${speedup}"
   mkdir -p "$(dirname "$LOGFILE")" "$(dirname "$PIDFILE")"
   # Run in background; capture hostctl_cpp pid
   nohup coz container-run \
     --target-pod "$target_pod" \
-    --period "$period" \
     --speedup "$speedup" \
-    --freeze-mode "$freeze_mode" \
-    ${exclude:+--exclude "$exclude"} \
     "${passthrough[@]}" \
     >"$LOGFILE" 2>&1 &
 
@@ -143,4 +145,3 @@ main() {
 }
 
 main "$@"
-
