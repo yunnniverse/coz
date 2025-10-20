@@ -1,0 +1,3444 @@
+ * Serving Flask app 'flask_server'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.24.47.41:8080
+[33mPress CTRL+C to quit[0m
+미리만든 group :  [{'parent': 'compose-post-service', 'child': 'media-service', 'callCount': 87}, {'parent': 'compose-post-service', 'child': 'text-service', 'callCount': 87}, {'parent': 'nginx-web-server', 'child': 'user-timeline-service', 'callCount': 14}, {'parent': 'text-service', 'child': 'url-shorten-service', 'callCount': 87}, {'parent': 'compose-post-service', 'child': 'unique-id-service', 'callCount': 87}, {'parent': 'nginx-web-server', 'child': 'compose-post-service', 'callCount': 87}, {'parent': 'user-timeline-service', 'child': 'post-storage-service', 'callCount': 14}, {'parent': 'compose-post-service', 'child': 'post-storage-service', 'callCount': 87}, {'parent': 'compose-post-service', 'child': 'home-timeline-service', 'callCount': 87}, {'parent': 'text-service', 'child': 'user-mention-service', 'callCount': 87}, {'parent': 'home-timeline-service', 'child': 'social-graph-service', 'callCount': 90}, {'parent': 'home-timeline-service', 'child': 'post-storage-service', 'callCount': 47}, {'parent': 'nginx-web-server', 'child': 'home-timeline-service', 'callCount': 47}, {'parent': 'compose-post-service', 'child': 'user-service', 'callCount': 87}, {'parent': 'compose-post-service', 'child': 'user-timeline-service', 'callCount': 87}]
+timestamp : 0 ~ 1740555867.3040998
+===========================================1===========================================
+새로운 timestamp : 1740555867.3040998 ~ 1740555877.3488953
+이번 timestamp : 0 ~ 1740555867.3040998
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555867304
+compose-post-service : 293.916
+user-service : 87.567
+media-service : 79.074
+nginx-web-server : 299.595
+user-mention-service : 338.088
+unique-id-service : 80.916
+social-graph-service : 245.004
+home-timeline-service : 167.46
+post-storage-service : 151.848
+url-shorten-service : 258.675
+text-service : 526.32
+user-timeline-service : 212.898
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=0&end=1740555867304
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 327.8721669433
+===========================================2===========================================
+새로운 timestamp : 1740555867.3040998 ~ 1740555887.373269
+이번 timestamp : 1740555867.3040998 ~ 1740555877.3488953
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555877348
+compose-post-service : 293.916
+user-service : 87.567
+media-service : 79.074
+nginx-web-server : 299.595
+user-mention-service : 338.088
+unique-id-service : 80.916
+social-graph-service : 245.004
+home-timeline-service : 167.46
+post-storage-service : 151.848
+url-shorten-service : 258.675
+text-service : 526.32
+user-timeline-service : 212.898
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555867304&end=1740555877348
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.0
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555867348895&end=1740555877348895
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {}, 'samplingRate': 1}}
+수집한 equation list : {}
+*************최종 request 별 탄소 : {}*************
+===========================================3===========================================
+새로운 timestamp : 1740555877.3488953 ~ 1740555897.3828983
+이번 timestamp : 1740555867.3040998 ~ 1740555887.373269
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555887373
+compose-post-service : 295.17
+user-service : 87.696
+media-service : 79.14
+nginx-web-server : 300.411
+user-mention-service : 338.466
+unique-id-service : 80.982
+social-graph-service : 245.256
+home-timeline-service : 167.589
+post-storage-service : 151.977
+url-shorten-service : 258.927
+text-service : 526.95
+user-timeline-service : 213.15
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555867304&end=1740555887373
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5206273608999994
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555877373269&end=1740555887373269
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.520627360899999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0867712268166665}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0867712268166665}}*************
+===========================================4===========================================
+새로운 timestamp : 1740555887.373269 ~ 1740555907.3803911
+이번 timestamp : 1740555877.3488953 ~ 1740555897.3828983
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555897382
+compose-post-service : 297.855
+user-service : 87.954
+media-service : 79.398
+nginx-web-server : 301.725
+user-mention-service : 339.531
+unique-id-service : 81.24
+social-graph-service : 245.826
+home-timeline-service : 167.973
+post-storage-service : 152.424
+url-shorten-service : 259.683
+text-service : 528.516
+user-timeline-service : 213.657
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555877348&end=1740555897382
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.2041526003999896
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555887382898&end=1740555897382898
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.20415260039999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0860109000285707}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0866951941378569}}*************
+===========================================5===========================================
+새로운 timestamp : 1740555897.3828983 ~ 1740555917.3865457
+이번 timestamp : 1740555887.373269 ~ 1740555907.3803911
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555907380
+compose-post-service : 299.652
+user-service : 88.035
+media-service : 79.539
+nginx-web-server : 302.073
+user-mention-service : 340.023
+unique-id-service : 81.381
+social-graph-service : 246.045
+home-timeline-service : 168.246
+post-storage-service : 152.643
+url-shorten-service : 260.091
+text-service : 529.395
+user-timeline-service : 213.852
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555887373&end=1740555907380
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6210930128999963
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555897380391&end=1740555907380391
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.621093012899996)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.103515502149999}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0883772249390712}}*************
+===========================================6===========================================
+새로운 timestamp : 1740555907.3803911 ~ 1740555927.3929698
+이번 timestamp : 1740555897.3828983 ~ 1740555917.3865457
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555917386
+compose-post-service : 301.707
+user-service : 88.218
+media-service : 79.662
+nginx-web-server : 302.757
+user-mention-service : 340.701
+unique-id-service : 81.504
+social-graph-service : 246.42
+home-timeline-service : 168.429
+post-storage-service : 152.826
+url-shorten-service : 260.649
+text-service : 530.25
+user-timeline-service : 214.164
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555897382&end=1740555917386
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.754927613600003
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555907386545&end=1740555917386545
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 0.754927613600003)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0629106344666669}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0858305658918307}}*************
+===========================================7===========================================
+새로운 timestamp : 1740555917.3865457 ~ 1740555937.4132593
+이번 timestamp : 1740555907.3803911 ~ 1740555927.3929698
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555927392
+compose-post-service : 304.791
+user-service : 88.473
+media-service : 79.917
+nginx-web-server : 303.69
+user-mention-service : 341.697
+unique-id-service : 81.759
+social-graph-service : 247.104
+home-timeline-service : 168.867
+post-storage-service : 153.267
+url-shorten-service : 261.39
+text-service : 531.804
+user-timeline-service : 214.728
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555907380&end=1740555927392
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.2199400599999952
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555917392969&end=1740555927392969
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.21994006)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0938415430769231}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0866316636103400}}*************
+===========================================8===========================================
+새로운 timestamp : 1740555927.3929698 ~ 1740555947.4184098
+이번 timestamp : 1740555917.3865457 ~ 1740555937.4132593
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555937413
+compose-post-service : 307.047
+user-service : 88.68
+media-service : 80.124
+nginx-web-server : 304.281
+user-mention-service : 342.297
+unique-id-service : 81.966
+social-graph-service : 247.437
+home-timeline-service : 169.206
+post-storage-service : 153.474
+url-shorten-service : 261.792
+text-service : 532.872
+user-timeline-service : 215.067
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555917386&end=1740555937413
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8080308868000016
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555927413259&end=1740555937413259
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.808030886800002)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.134671814466667}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0914356786959727}}*************
+===========================================9===========================================
+새로운 timestamp : 1740555937.4132593 ~ 1740555957.410837
+이번 timestamp : 1740555927.3929698 ~ 1740555947.4184098
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555947418
+compose-post-service : 308.766
+user-service : 88.803
+media-service : 80.187
+nginx-web-server : 304.761
+user-mention-service : 342.777
+unique-id-service : 82.029
+social-graph-service : 247.797
+home-timeline-service : 169.44
+post-storage-service : 153.714
+url-shorten-service : 262.212
+text-service : 533.646
+user-timeline-service : 215.373
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555927392&end=1740555947418
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6293455485999966
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555937418410&end=1740555947418410
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.629345548599997)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0572132316909088}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0880134339954663}}*************
+===========================================10===========================================
+새로운 timestamp : 1740555947.4184098 ~ 1740555967.4208663
+이번 timestamp : 1740555937.4132593 ~ 1740555957.410837
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555957410
+compose-post-service : 310.824
+user-service : 88.974
+media-service : 80.418
+nginx-web-server : 305.388
+user-mention-service : 343.524
+unique-id-service : 82.26
+social-graph-service : 248.196
+home-timeline-service : 169.788
+post-storage-service : 154.059
+url-shorten-service : 262.734
+text-service : 534.738
+user-timeline-service : 215.832
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555937413&end=1740555957410
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8647222190000106
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555947410837&end=1740555957410837
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 0.864722219000011)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0665170937692316}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0858637999728428}}*************
+===========================================11===========================================
+새로운 timestamp : 1740555957.410837 ~ 1740555977.464049
+이번 timestamp : 1740555947.4184098 ~ 1740555967.4208663
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555967420
+compose-post-service : 315.984
+user-service : 89.334
+media-service : 80.922
+nginx-web-server : 306.912
+user-mention-service : 345.186
+unique-id-service : 82.689
+social-graph-service : 249.114
+home-timeline-service : 170.565
+post-storage-service : 154.698
+url-shorten-service : 264.051
+text-service : 537.261
+user-timeline-service : 216.807
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555947418&end=1740555967420
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 2.0078778163999806
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555957420866&end=1740555967420866
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 17}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(17*wrk2_api_post_compose, 2.00787781639998)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.118110459788234}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0890884659543820}}*************
+===========================================12===========================================
+새로운 timestamp : 1740555967.4208663 ~ 1740555987.4732249
+이번 timestamp : 1740555957.410837 ~ 1740555977.464049
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555977464
+compose-post-service : 319.077
+user-service : 89.589
+media-service : 81.186
+nginx-web-server : 307.932
+user-mention-service : 346.389
+unique-id-service : 83.013
+social-graph-service : 249.948
+home-timeline-service : 171.084
+post-storage-service : 155.277
+url-shorten-service : 264.819
+text-service : 538.977
+user-timeline-service : 217.515
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555957410&end=1740555977464
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.3494689899000154
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555967464049&end=1740555977464049
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 15}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(15*wrk2_api_post_compose, 1.34946898990002)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0899645993266680}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0891760792916106}}*************
+===========================================13===========================================
+새로운 timestamp : 1740555977.464049 ~ 1740555997.435925
+이번 timestamp : 1740555967.4208663 ~ 1740555987.4732249
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555987473
+compose-post-service : 320.613
+user-service : 89.727
+media-service : 81.324
+nginx-web-server : 308.361
+user-mention-service : 346.833
+unique-id-service : 83.151
+social-graph-service : 250.26
+home-timeline-service : 171.276
+post-storage-service : 155.469
+url-shorten-service : 265.146
+text-service : 539.694
+user-timeline-service : 217.773
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555967420&end=1740555987473
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5766010812999963
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555977473224&end=1740555987473224
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.576601081299996)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0720751351624995}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0874659848786995}}*************
+===========================================14===========================================
+새로운 timestamp : 1740555987.4732249 ~ 1740556007.4725766
+이번 timestamp : 1740555977.464049 ~ 1740555997.435925
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740555997435
+compose-post-service : 324.018
+user-service : 90.009
+media-service : 81.537
+nginx-web-server : 309.309
+user-mention-service : 348.054
+unique-id-service : 83.433
+social-graph-service : 250.944
+home-timeline-service : 171.822
+post-storage-service : 155.943
+url-shorten-service : 265.959
+text-service : 541.431
+user-timeline-service : 218.466
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555977464&end=1740555997435
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.351263019400007
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555987435925&end=1740555997435925
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 1.35126301940001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.112605251616667}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0899799115524963}}*************
+===========================================15===========================================
+새로운 timestamp : 1740555997.435925 ~ 1740556017.5216978
+이번 timestamp : 1740555987.4732249 ~ 1740556007.4725766
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556007472
+compose-post-service : 325.629
+user-service : 90.141
+media-service : 81.669
+nginx-web-server : 309.747
+user-mention-service : 348.492
+unique-id-service : 83.565
+social-graph-service : 251.322
+home-timeline-service : 172.074
+post-storage-service : 156.138
+url-shorten-service : 266.277
+text-service : 542.175
+user-timeline-service : 218.721
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555987473&end=1740556007472
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6009998824999973
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740555997472576&end=1740556007472576
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.600999882499997)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0667777647222219}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0876596968694688}}*************
+===========================================16===========================================
+새로운 timestamp : 1740556007.4725766 ~ 1740556027.483914
+이번 timestamp : 1740555997.435925 ~ 1740556017.5216978
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556017521
+compose-post-service : 327.534
+user-service : 90.327
+media-service : 81.729
+nginx-web-server : 310.245
+user-mention-service : 348.927
+unique-id-service : 83.691
+social-graph-service : 251.7
+home-timeline-service : 172.329
+post-storage-service : 156.333
+url-shorten-service : 266.778
+text-service : 542.979
+user-timeline-service : 219.036
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740555997435&end=1740556017521
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.676707927400007
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556007521697&end=1740556017521697
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.676707927400007)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0676707927400007}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0856608064565220}}*************
+===========================================17===========================================
+새로운 timestamp : 1740556017.5216978 ~ 1740556037.506868
+이번 timestamp : 1740556007.4725766 ~ 1740556027.483914
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556027483
+compose-post-service : 329.586
+user-service : 90.528
+media-service : 81.861
+nginx-web-server : 310.761
+user-mention-service : 349.512
+unique-id-service : 83.823
+social-graph-service : 252.222
+home-timeline-service : 172.659
+post-storage-service : 156.525
+url-shorten-service : 267.3
+text-service : 543.948
+user-timeline-service : 219.492
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556007472&end=1740556027483
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7904493976999942
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556017483913&end=1740556027483913
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.790449397699994)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.131741566283332}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0902688824392030}}*************
+===========================================18===========================================
+새로운 timestamp : 1740556027.483914 ~ 1740556047.504586
+이번 timestamp : 1740556017.5216978 ~ 1740556037.506868
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556037506
+compose-post-service : 331.497
+user-service : 90.66
+media-service : 82.056
+nginx-web-server : 311.4
+user-mention-service : 350.28
+unique-id-service : 83.955
+social-graph-service : 252.609
+home-timeline-service : 172.917
+post-storage-service : 156.846
+url-shorten-service : 267.816
+text-service : 544.968
+user-timeline-service : 219.876
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556017521&end=1740556037506
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.796907903899986
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556027506868&end=1740556037506868
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.796907903899986)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0885453226555540}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0900965264608381}}*************
+===========================================19===========================================
+새로운 timestamp : 1740556037.506868 ~ 1740556057.5174007
+이번 timestamp : 1740556027.483914 ~ 1740556047.504586
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556047504
+compose-post-service : 332.796
+user-service : 90.729
+media-service : 82.125
+nginx-web-server : 311.667
+user-mention-service : 350.613
+unique-id-service : 84.024
+social-graph-service : 252.807
+home-timeline-service : 172.986
+post-storage-service : 157.044
+url-shorten-service : 268.083
+text-service : 545.493
+user-timeline-service : 220.074
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556027483&end=1740556047504
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.4259026033000161
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556037504586&end=1740556047504586
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 5}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(5*wrk2_api_post_compose, 0.425902603300016)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0851805206600032}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0896049258807546}}*************
+===========================================20===========================================
+새로운 timestamp : 1740556047.504586 ~ 1740556067.5372553
+이번 timestamp : 1740556037.506868 ~ 1740556057.5174007
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556057517
+compose-post-service : 335.562
+user-service : 90.945
+media-service : 82.347
+nginx-web-server : 312.39
+user-mention-service : 351.624
+unique-id-service : 84.246
+social-graph-service : 253.527
+home-timeline-service : 173.418
+post-storage-service : 157.482
+url-shorten-service : 268.728
+text-service : 546.927
+user-timeline-service : 220.656
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556037506&end=1740556057517
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1255741082999986
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556047517400&end=1740556057517400
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 1.1255741083)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0937978423583333}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0900242175285125}}*************
+===========================================21===========================================
+새로운 timestamp : 1740556057.5174007 ~ 1740556077.5380716
+이번 timestamp : 1740556047.504586 ~ 1740556067.5372553
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556067537
+compose-post-service : 338.127
+user-service : 91.146
+media-service : 82.545
+nginx-web-server : 313.293
+user-mention-service : 352.398
+unique-id-service : 84.444
+social-graph-service : 254.049
+home-timeline-service : 173.808
+post-storage-service : 157.866
+url-shorten-service : 269.31
+text-service : 548.151
+user-timeline-service : 221.238
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556047504&end=1740556067537
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0193675618999978
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556057537255&end=1740556067537255
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.0193675619)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0728119687071429}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0883029926463755}}*************
+===========================================22===========================================
+새로운 timestamp : 1740556067.5372553 ~ 1740556087.5187526
+이번 timestamp : 1740556057.5174007 ~ 1740556077.5380716
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556077538
+compose-post-service : 341.841
+user-service : 91.542
+media-service : 82.875
+nginx-web-server : 314.382
+user-mention-service : 353.751
+unique-id-service : 84.774
+social-graph-service : 254.889
+home-timeline-service : 174.447
+post-storage-service : 158.574
+url-shorten-service : 270.15
+text-service : 550.182
+user-timeline-service : 222.078
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556057517&end=1740556077538
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.5679817829999996
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556067538071&end=1740556077538071
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.567981783)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.111998698785714}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0906725632603094}}*************
+===========================================23===========================================
+새로운 timestamp : 1740556077.5380716 ~ 1740556097.5273163
+이번 timestamp : 1740556067.5372553 ~ 1740556087.5187526
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556087518
+compose-post-service : 344.445
+user-service : 91.815
+media-service : 83.079
+nginx-web-server : 315.123
+user-mention-service : 354.693
+unique-id-service : 84.978
+social-graph-service : 255.561
+home-timeline-service : 174.858
+post-storage-service : 158.91
+url-shorten-service : 270.756
+text-service : 551.46
+user-timeline-service : 222.69
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556067537&end=1740556087518
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0624242698999944
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556077518752&end=1740556087518752
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 1.06242426989999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0965840245363627}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0912637093879148}}*************
+===========================================24===========================================
+새로운 timestamp : 1740556087.5187526 ~ 1740556107.558083
+이번 timestamp : 1740556077.5380716 ~ 1740556097.5273163
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556097527
+compose-post-service : 346.986
+user-service : 92.064
+media-service : 83.328
+nginx-web-server : 315.864
+user-mention-service : 355.542
+unique-id-service : 85.161
+social-graph-service : 256.239
+home-timeline-service : 175.296
+post-storage-service : 159.348
+url-shorten-service : 271.368
+text-service : 552.669
+user-timeline-service : 223.128
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556077538&end=1740556097527
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.03156696249999
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556087527316&end=1740556097527316
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 1.03156696249999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0937788147727264}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0915152199263959}}*************
+===========================================25===========================================
+새로운 timestamp : 1740556097.5273163 ~ 1740556117.5929058
+이번 timestamp : 1740556087.5187526 ~ 1740556107.558083
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556107558
+compose-post-service : 348.0
+user-service : 92.133
+media-service : 83.397
+nginx-web-server : 316.137
+user-mention-service : 355.884
+unique-id-service : 85.23
+social-graph-service : 256.512
+home-timeline-service : 175.503
+post-storage-service : 159.486
+url-shorten-service : 271.575
+text-service : 553.008
+user-timeline-service : 223.335
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556087518&end=1740556107558
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.3835635071000179
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556097558083&end=1740556107558083
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.383563507100018)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0479454383875023}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0871582417725065}}*************
+===========================================26===========================================
+새로운 timestamp : 1740556107.558083 ~ 1740556127.5792768
+이번 timestamp : 1740556097.5273163 ~ 1740556117.5929058
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556117592
+compose-post-service : 351.117
+user-service : 92.343
+media-service : 83.679
+nginx-web-server : 317.025
+user-mention-service : 356.841
+unique-id-service : 85.512
+social-graph-service : 257.4
+home-timeline-service : 176.058
+post-storage-service : 159.837
+url-shorten-service : 272.319
+text-service : 554.496
+user-timeline-service : 223.884
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556097527&end=1740556117592
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.233215878299991
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556107592905&end=1740556117592905
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 1.23321587829999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.123321587829999}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0907745763782558}}*************
+===========================================27===========================================
+새로운 timestamp : 1740556117.5929058 ~ 1740556137.60269
+이번 timestamp : 1740556107.558083 ~ 1740556127.5792768
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556127579
+compose-post-service : 353.829
+user-service : 92.526
+media-service : 83.922
+nginx-web-server : 317.868
+user-mention-service : 357.684
+unique-id-service : 85.815
+social-graph-service : 258.066
+home-timeline-service : 176.484
+post-storage-service : 160.263
+url-shorten-service : 273.039
+text-service : 555.75
+user-timeline-service : 224.487
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556107558&end=1740556127579
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1029693366000044
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556117579276&end=1740556127579276
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 1.1029693366)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0919141113833333}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0908885298787635}}*************
+===========================================28===========================================
+새로운 timestamp : 1740556127.5792768 ~ 1740556147.611659
+이번 timestamp : 1740556117.5929058 ~ 1740556137.60269
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556137602
+compose-post-service : 355.311
+user-service : 92.652
+media-service : 83.985
+nginx-web-server : 318.237
+user-mention-service : 357.999
+unique-id-service : 85.878
+social-graph-service : 258.381
+home-timeline-service : 176.73
+post-storage-service : 160.449
+url-shorten-service : 273.354
+text-service : 556.431
+user-timeline-service : 224.802
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556117592&end=1740556137602
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5353384028000032
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556127602690&end=1740556137602690
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.535338402800003)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0535338402800003}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0871530609188872}}*************
+===========================================29===========================================
+새로운 timestamp : 1740556137.60269 ~ 1740556157.6110375
+이번 timestamp : 1740556127.5792768 ~ 1740556147.611659
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556147611
+compose-post-service : 357.594
+user-service : 92.847
+media-service : 84.114
+nginx-web-server : 318.99
+user-mention-service : 358.692
+unique-id-service : 86.073
+social-graph-service : 258.948
+home-timeline-service : 177.054
+post-storage-service : 160.767
+url-shorten-service : 273.921
+text-service : 557.565
+user-timeline-service : 225.306
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556127579&end=1740556147611
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9163902686000023
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556137611659&end=1740556147611659
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.916390268600002)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.152731711433334}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0937109259703319}}*************
+===========================================30===========================================
+새로운 timestamp : 1740556147.611659 ~ 1740556167.6207714
+이번 timestamp : 1740556137.60269 ~ 1740556157.6110375
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556157611
+compose-post-service : 360.105
+user-service : 92.979
+media-service : 84.369
+nginx-web-server : 319.683
+user-mention-service : 359.451
+unique-id-service : 86.328
+social-graph-service : 259.455
+home-timeline-service : 177.435
+post-storage-service : 161.082
+url-shorten-service : 274.485
+text-service : 558.822
+user-timeline-service : 225.75
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556137602&end=1740556157611
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9655466768999991
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556147611037&end=1740556157611037
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 16}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(16*wrk2_api_post_compose, 0.965546676899999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0603466673062499}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0903745001039237}}*************
+===========================================31===========================================
+새로운 timestamp : 1740556157.6110375 ~ 1740556177.6416793
+이번 timestamp : 1740556147.611659 ~ 1740556167.6207714
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556167620
+compose-post-service : 363.189
+user-service : 93.312
+media-service : 84.702
+nginx-web-server : 320.718
+user-mention-service : 360.741
+unique-id-service : 86.601
+social-graph-service : 260.232
+home-timeline-service : 177.96
+post-storage-service : 161.67
+url-shorten-service : 275.262
+text-service : 560.685
+user-timeline-service : 226.467
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556147611&end=1740556167620
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.3867848034999963
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556157620771&end=1740556167620771
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 16}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(16*wrk2_api_post_compose, 1.3867848035)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0866740502187500}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0900044551154063}}*************
+===========================================32===========================================
+새로운 timestamp : 1740556167.6207714 ~ 1740556187.6431549
+이번 timestamp : 1740556157.6110375 ~ 1740556177.6416793
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556177641
+compose-post-service : 366.963
+user-service : 93.579
+media-service : 84.969
+nginx-web-server : 321.768
+user-mention-service : 362.118
+unique-id-service : 86.868
+social-graph-service : 260.964
+home-timeline-service : 178.497
+post-storage-service : 162.336
+url-shorten-service : 276.249
+text-service : 562.65
+user-timeline-service : 227.196
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556157611&end=1740556177641
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.5091376153999994
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556167641679&end=1740556177641679
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 1.5091376154)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.150913761540000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0960953857578657}}*************
+===========================================33===========================================
+새로운 timestamp : 1740556177.6416793 ~ 1740556197.660313
+이번 timestamp : 1740556167.6207714 ~ 1740556187.6431549
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556187643
+compose-post-service : 368.775
+user-service : 93.687
+media-service : 85.077
+nginx-web-server : 322.278
+user-mention-service : 362.661
+unique-id-service : 87.039
+social-graph-service : 261.363
+home-timeline-service : 178.728
+post-storage-service : 162.558
+url-shorten-service : 276.639
+text-service : 563.544
+user-timeline-service : 227.472
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556167620&end=1740556187643
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6774255392
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556177643154&end=1740556187643154
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 0.6774255392)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0564521282666667}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0921310600087458}}*************
+===========================================34===========================================
+새로운 timestamp : 1740556187.6431549 ~ 1740556207.6644123
+이번 timestamp : 1740556177.6416793 ~ 1740556197.660313
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556197660
+compose-post-service : 370.875
+user-service : 93.813
+media-service : 85.26
+nginx-web-server : 322.827
+user-mention-service : 363.273
+unique-id-service : 87.222
+social-graph-service : 261.792
+home-timeline-service : 179.031
+post-storage-service : 162.861
+url-shorten-service : 277.125
+text-service : 564.573
+user-timeline-service : 227.838
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556177641&end=1740556197660
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7976255156999963
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556187660313&end=1740556197660313
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.797625515699996)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.113946502242857}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0943126042321569}}*************
+===========================================35===========================================
+새로운 timestamp : 1740556197.660313 ~ 1740556217.6816392
+이번 timestamp : 1740556187.6431549 ~ 1740556207.6644123
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556207664
+compose-post-service : 373.431
+user-service : 93.957
+media-service : 85.404
+nginx-web-server : 323.526
+user-mention-service : 364.101
+unique-id-service : 87.429
+social-graph-service : 262.341
+home-timeline-service : 179.373
+post-storage-service : 163.143
+url-shorten-service : 277.743
+text-service : 565.8
+user-timeline-service : 228.324
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556187643&end=1740556207664
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9666230945999976
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556197664412&end=1740556207664412
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 0.966623094599998)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0805519245499998}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0929365362639412}}*************
+===========================================36===========================================
+새로운 timestamp : 1740556207.6644123 ~ 1740556227.6869857
+이번 timestamp : 1740556197.660313 ~ 1740556217.6816392
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556217681
+compose-post-service : 376.329
+user-service : 94.209
+media-service : 85.662
+nginx-web-server : 324.384
+user-mention-service : 365.025
+unique-id-service : 87.681
+social-graph-service : 263.073
+home-timeline-service : 179.811
+post-storage-service : 163.644
+url-shorten-service : 278.49
+text-service : 567.273
+user-timeline-service : 228.891
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556197660&end=1740556217681
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1840594700000089
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556207681639&end=1740556217681639
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 1.18405947000001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.107641770000001}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0944070596375472}}*************
+===========================================37===========================================
+새로운 timestamp : 1740556217.6816392 ~ 1740556237.69556
+이번 timestamp : 1740556207.6644123 ~ 1740556227.6869857
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556227686
+compose-post-service : 378.432
+user-service : 94.407
+media-service : 85.797
+nginx-web-server : 324.897
+user-mention-service : 365.724
+unique-id-service : 87.816
+social-graph-service : 263.457
+home-timeline-service : 180.075
+post-storage-service : 163.968
+url-shorten-service : 279.003
+text-service : 568.224
+user-timeline-service : 229.275
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556207664&end=1740556227686
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7897317858999976
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556217686985&end=1740556227686985
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.789731785899998)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0987164732374998}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0948380009975424}}*************
+===========================================38===========================================
+새로운 timestamp : 1740556227.6869857 ~ 1740556247.7086775
+이번 timestamp : 1740556217.6816392 ~ 1740556237.69556
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556237695
+compose-post-service : 380.901
+user-service : 94.605
+media-service : 85.995
+nginx-web-server : 325.608
+user-mention-service : 366.57
+unique-id-service : 88.083
+social-graph-service : 263.979
+home-timeline-service : 180.411
+post-storage-service : 164.235
+url-shorten-service : 279.594
+text-service : 569.538
+user-timeline-service : 229.671
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556217681&end=1740556237695
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.970569959500001
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556227695560&end=1740556237695560
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.970569959500001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0882336326818183}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0941775641659700}}*************
+===========================================39===========================================
+새로운 timestamp : 1740556237.69556 ~ 1740556257.7128408
+이번 timestamp : 1740556227.6869857 ~ 1740556247.7086775
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556247708
+compose-post-service : 382.077
+user-service : 94.731
+media-service : 86.058
+nginx-web-server : 325.923
+user-mention-service : 366.948
+unique-id-service : 88.146
+social-graph-service : 264.234
+home-timeline-service : 180.537
+post-storage-service : 164.421
+url-shorten-service : 279.912
+text-service : 570.039
+user-timeline-service : 229.857
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556227686&end=1740556247708
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.4416900628999895
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556237708677&end=1740556247708677
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.44169006289999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0490766736555544}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0896674751149285}}*************
+===========================================40===========================================
+새로운 timestamp : 1740556247.7086775 ~ 1740556267.7231407
+이번 timestamp : 1740556237.69556 ~ 1740556257.7128408
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556257712
+compose-post-service : 384.462
+user-service : 94.866
+media-service : 86.262
+nginx-web-server : 326.442
+user-mention-service : 367.725
+unique-id-service : 88.35
+social-graph-service : 264.69
+home-timeline-service : 180.864
+post-storage-service : 164.748
+url-shorten-service : 280.5
+text-service : 571.131
+user-timeline-service : 230.253
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556237695&end=1740556257712
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8862505730000045
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556247712840&end=1740556257712840
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.886250573000005)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.126607224714286}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0933614500748643}}*************
+===========================================41===========================================
+새로운 timestamp : 1740556257.7128408 ~ 1740556277.7354112
+이번 timestamp : 1740556247.7086775 ~ 1740556267.7231407
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556267723
+compose-post-service : 386.985
+user-service : 95.073
+media-service : 86.391
+nginx-web-server : 327.294
+user-mention-service : 368.655
+unique-id-service : 88.557
+social-graph-service : 265.155
+home-timeline-service : 181.269
+post-storage-service : 165.153
+url-shorten-service : 281.151
+text-service : 572.517
+user-timeline-service : 230.718
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556247708&end=1740556267723
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0315669625000035
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556257723140&end=1740556267723140
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.0315669625)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0793513048076923}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0919604355481471}}*************
+===========================================42===========================================
+새로운 timestamp : 1740556267.7231407 ~ 1740556287.7464411
+이번 timestamp : 1740556257.7128408 ~ 1740556277.7354112
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556277735
+compose-post-service : 388.854
+user-service : 95.265
+media-service : 86.517
+nginx-web-server : 327.738
+user-mention-service : 369.222
+unique-id-service : 88.683
+social-graph-service : 265.539
+home-timeline-service : 181.455
+post-storage-service : 165.339
+url-shorten-service : 281.526
+text-service : 573.324
+user-timeline-service : 231.033
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556257712&end=1740556277735
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6670201680999912
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556267735411&end=1740556277735411
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.667020168099991)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0833775210124989}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0911021440945822}}*************
+===========================================43===========================================
+새로운 timestamp : 1740556277.7354112 ~ 1740556297.753218
+이번 timestamp : 1740556267.7231407 ~ 1740556287.7464411
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556287746
+compose-post-service : 391.653
+user-service : 95.472
+media-service : 86.724
+nginx-web-server : 328.605
+user-mention-service : 369.945
+unique-id-service : 88.95
+social-graph-service : 266.133
+home-timeline-service : 181.92
+post-storage-service : 165.675
+url-shorten-service : 282.183
+text-service : 574.563
+user-timeline-service : 231.63
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556267723&end=1740556287746
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0713944174000083
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556277746441&end=1740556287746441
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 1.07139441740001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0973994924909100}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0917318789342150}}*************
+===========================================44===========================================
+새로운 timestamp : 1740556287.7464411 ~ 1740556307.770323
+이번 timestamp : 1740556277.7354112 ~ 1740556297.753218
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556297753
+compose-post-service : 394.437
+user-service : 95.682
+media-service : 86.934
+nginx-web-server : 329.283
+user-mention-service : 370.827
+unique-id-service : 89.16
+social-graph-service : 266.679
+home-timeline-service : 182.259
+post-storage-service : 166.02
+url-shorten-service : 282.798
+text-service : 575.925
+user-timeline-service : 232.251
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556277735&end=1740556297753
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0527365105999955
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556287753218&end=1740556297753218
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 1.0527365106)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.105273651060000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0930860561467935}}*************
+===========================================45===========================================
+새로운 timestamp : 1740556297.753218 ~ 1740556317.7677789
+이번 timestamp : 1740556287.7464411 ~ 1740556307.770323
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556307770
+compose-post-service : 396.09
+user-service : 95.811
+media-service : 87.063
+nginx-web-server : 329.703
+user-mention-service : 371.304
+unique-id-service : 89.289
+social-graph-service : 267.036
+home-timeline-service : 182.556
+post-storage-service : 166.203
+url-shorten-service : 283.155
+text-service : 576.636
+user-timeline-service : 232.668
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556287746&end=1740556307770
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6289867426999931
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556297770323&end=1740556307770323
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.628986742699993)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0698874158555548}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0907661921176696}}*************
+===========================================46===========================================
+새로운 timestamp : 1740556307.770323 ~ 1740556327.7606971
+이번 timestamp : 1740556297.753218 ~ 1740556317.7677789
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556317767
+compose-post-service : 399.228
+user-service : 96.003
+media-service : 87.255
+nginx-web-server : 330.714
+user-mention-service : 372.183
+unique-id-service : 89.481
+social-graph-service : 267.732
+home-timeline-service : 183.069
+post-storage-service : 166.59
+url-shorten-service : 283.86
+text-service : 577.953
+user-timeline-service : 233.427
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556297753&end=1740556317767
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.193747229300011
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556307767778&end=1740556317767778
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 1.19374722930001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0994789357750008}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0916374664834028}}*************
+===========================================47===========================================
+새로운 timestamp : 1740556317.7677789 ~ 1740556337.7869558
+이번 timestamp : 1740556307.770323 ~ 1740556327.7606971
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556327760
+compose-post-service : 401.361
+user-service : 96.15
+media-service : 87.402
+nginx-web-server : 331.14
+user-mention-service : 372.732
+unique-id-service : 89.628
+social-graph-service : 268.212
+home-timeline-service : 183.495
+post-storage-service : 166.809
+url-shorten-service : 284.409
+text-service : 578.994
+user-timeline-service : 233.853
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556307770&end=1740556327760
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8001371570000048
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556317760697&end=1740556327760697
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.800137157000005)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0889041285555561}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0913641326906181}}*************
+===========================================48===========================================
+새로운 timestamp : 1740556327.7606971 ~ 1740556347.7826211
+이번 timestamp : 1740556317.7677789 ~ 1740556337.7869558
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556337786
+compose-post-service : 402.891
+user-service : 96.285
+media-service : 87.537
+nginx-web-server : 331.545
+user-mention-service : 373.137
+unique-id-service : 89.697
+social-graph-service : 268.551
+home-timeline-service : 183.696
+post-storage-service : 166.944
+url-shorten-service : 284.814
+text-service : 579.663
+user-timeline-service : 234.189
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556317767&end=1740556337786
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5697837692000012
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556327786955&end=1740556337786955
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.569783769200001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0813976813142859}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0903674875529849}}*************
+===========================================49===========================================
+새로운 timestamp : 1740556337.7869558 ~ 1740556357.789154
+이번 timestamp : 1740556327.7606971 ~ 1740556347.7826211
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556347782
+compose-post-service : 404.304
+user-service : 96.414
+media-service : 87.666
+nginx-web-server : 331.986
+user-mention-service : 373.449
+unique-id-service : 89.826
+social-graph-service : 268.863
+home-timeline-service : 183.948
+post-storage-service : 167.136
+url-shorten-service : 285.126
+text-service : 580.404
+user-timeline-service : 234.441
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556327760&end=1740556347782
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5518434741999887
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556337782621&end=1740556347782621
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.551843474199989)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0919739123666648}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0905281300343529}}*************
+===========================================50===========================================
+새로운 timestamp : 1740556347.7826211 ~ 1740556367.7946758
+이번 timestamp : 1740556337.7869558 ~ 1740556357.789154
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556357789
+compose-post-service : 406.002
+user-service : 96.489
+media-service : 87.741
+nginx-web-server : 332.274
+user-mention-service : 373.809
+unique-id-service : 89.901
+social-graph-service : 269.217
+home-timeline-service : 184.161
+post-storage-service : 167.283
+url-shorten-service : 285.48
+text-service : 581.118
+user-timeline-service : 234.729
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556337786&end=1740556357789
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5550727273000176
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556347789154&end=1740556357789154
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.555072727300018)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0925121212166697}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0907265291525845}}*************
+===========================================51===========================================
+새로운 timestamp : 1740556357.789154 ~ 1740556377.824108
+이번 timestamp : 1740556347.7826211 ~ 1740556367.7946758
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556367794
+compose-post-service : 408.444
+user-service : 96.744
+media-service : 87.936
+nginx-web-server : 332.859
+user-mention-service : 374.583
+unique-id-service : 90.096
+social-graph-service : 269.733
+home-timeline-service : 184.608
+post-storage-service : 167.73
+url-shorten-service : 286.116
+text-service : 582.315
+user-timeline-service : 235.245
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556347782&end=1740556367794
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9813341364999981
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556357794675&end=1740556367794675
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 0.981334136499998)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0754872412692306}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0892026003642492}}*************
+===========================================52===========================================
+새로운 timestamp : 1740556367.7946758 ~ 1740556387.8075492
+이번 timestamp : 1740556357.789154 ~ 1740556377.824108
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556377824
+compose-post-service : 414.114
+user-service : 97.317
+media-service : 88.437
+nginx-web-server : 334.734
+user-mention-service : 376.128
+unique-id-service : 90.597
+social-graph-service : 271.176
+home-timeline-service : 185.604
+post-storage-service : 168.753
+url-shorten-service : 287.634
+text-service : 585.264
+user-timeline-service : 236.637
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556357789&end=1740556377824
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 2.3903649057999834
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556367824108&end=1740556377824108
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 25}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(25*wrk2_api_post_compose, 2.39036490579998)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0956145962319992}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0898437999510242}}*************
+===========================================53===========================================
+새로운 timestamp : 1740556377.824108 ~ 1740556397.8481364
+이번 timestamp : 1740556367.7946758 ~ 1740556387.8075492
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556387807
+compose-post-service : 417.309
+user-service : 97.647
+media-service : 88.641
+nginx-web-server : 335.973
+user-mention-service : 377.31
+unique-id-service : 90.927
+social-graph-service : 271.971
+home-timeline-service : 186.069
+post-storage-service : 169.35
+url-shorten-service : 288.492
+text-service : 586.965
+user-timeline-service : 237.429
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556367794&end=1740556387807
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.3979077864000187
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556377807549&end=1740556387807549
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.39790778640002)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0998505561714300}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0908444755730647}}*************
+===========================================54===========================================
+새로운 timestamp : 1740556387.8075492 ~ 1740556407.827945
+이번 timestamp : 1740556377.824108 ~ 1740556397.8481364
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556397848
+compose-post-service : 418.968
+user-service : 97.773
+media-service : 88.767
+nginx-web-server : 336.354
+user-mention-service : 377.631
+unique-id-service : 91.053
+social-graph-service : 272.352
+home-timeline-service : 186.324
+post-storage-service : 169.545
+url-shorten-service : 288.81
+text-service : 587.646
+user-timeline-service : 237.747
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556377824&end=1740556397848
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5844948110999779
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556387848136&end=1740556397848136
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.584494811099978)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0584494811099978}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0876049761267580}}*************
+===========================================55===========================================
+새로운 timestamp : 1740556397.8481364 ~ 1740556417.8468747
+이번 timestamp : 1740556387.8075492 ~ 1740556407.827945
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556407827
+compose-post-service : 421.413
+user-service : 98.049
+media-service : 88.893
+nginx-web-server : 337.143
+user-mention-service : 378.357
+unique-id-service : 91.254
+social-graph-service : 272.877
+home-timeline-service : 186.798
+post-storage-service : 169.935
+url-shorten-service : 289.476
+text-service : 588.81
+user-timeline-service : 238.272
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556387807&end=1740556407827
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.993533537100007
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556397827945&end=1740556407827945
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.993533537100007)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.124191692137501}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0912636477278323}}*************
+===========================================56===========================================
+새로운 timestamp : 1740556407.827945 ~ 1740556427.8485477
+이번 timestamp : 1740556397.8481364 ~ 1740556417.8468747
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556417846
+compose-post-service : 423.585
+user-service : 98.268
+media-service : 89.043
+nginx-web-server : 337.722
+user-mention-service : 378.861
+unique-id-service : 91.404
+social-graph-service : 273.369
+home-timeline-service : 187.089
+post-storage-service : 170.226
+url-shorten-service : 290.04
+text-service : 589.875
+user-timeline-service : 238.704
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556397848&end=1740556417846
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8263299877000042
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556407846874&end=1740556417846874
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.826329987700004)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0918144430777782}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0913187272628269}}*************
+===========================================57===========================================
+새로운 timestamp : 1740556417.8468747 ~ 1740556437.8534904
+이번 timestamp : 1740556407.827945 ~ 1740556427.8485477
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556427848
+compose-post-service : 425.772
+user-service : 98.397
+media-service : 89.241
+nginx-web-server : 338.241
+user-mention-service : 379.446
+unique-id-service : 91.602
+social-graph-service : 273.891
+home-timeline-service : 187.416
+post-storage-service : 170.49
+url-shorten-service : 290.625
+text-service : 590.91
+user-timeline-service : 239.097
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556407827&end=1740556427848
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8302768526000008
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556417848547&end=1740556427848547
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 16}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(16*wrk2_api_post_compose, 0.830276852600001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0518923032875001}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0873760848652942}}*************
+===========================================58===========================================
+새로운 timestamp : 1740556427.8485477 ~ 1740556447.872344
+이번 timestamp : 1740556417.8468747 ~ 1740556437.8534904
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556437853
+compose-post-service : 430.5
+user-service : 98.799
+media-service : 89.703
+nginx-web-server : 339.801
+user-mention-service : 380.988
+unique-id-service : 92.064
+social-graph-service : 275.055
+home-timeline-service : 188.268
+post-storage-service : 171.267
+url-shorten-service : 291.996
+text-service : 593.424
+user-timeline-service : 240.27
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556417846&end=1740556437853
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 2.034070647099994
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556427853490&end=1740556437853490
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 16}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(16*wrk2_api_post_compose, 2.03407064709999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.127129415443749}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0913514179231398}}*************
+===========================================59===========================================
+새로운 timestamp : 1740556437.8534904 ~ 1740556457.8751256
+이번 timestamp : 1740556427.8485477 ~ 1740556447.872344
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556447872
+compose-post-service : 432.945
+user-service : 99.015
+media-service : 89.919
+nginx-web-server : 340.794
+user-mention-service : 381.825
+unique-id-service : 92.28
+social-graph-service : 275.619
+home-timeline-service : 188.622
+post-storage-service : 171.69
+url-shorten-service : 292.689
+text-service : 594.822
+user-timeline-service : 240.834
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556427848&end=1740556447872
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0667299407000082
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556437872344&end=1740556447872344
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.06672994070001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0820561492846162}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0904218910592874}}*************
+===========================================60===========================================
+새로운 timestamp : 1740556447.872344 ~ 1740556467.8826854
+이번 timestamp : 1740556437.8534904 ~ 1740556457.8751256
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556457875
+compose-post-service : 434.802
+user-service : 99.138
+media-service : 90.111
+nginx-web-server : 341.343
+user-mention-service : 382.374
+unique-id-service : 92.34
+social-graph-service : 276.054
+home-timeline-service : 188.868
+post-storage-service : 171.936
+url-shorten-service : 293.178
+text-service : 595.782
+user-timeline-service : 241.203
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556437853&end=1740556457875
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7265819475000072
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556447875125&end=1740556457875125
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.726581947500007)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0726581947500007}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0886455214283587}}*************
+===========================================61===========================================
+새로운 timestamp : 1740556457.8751256 ~ 1740556477.9000897
+이번 timestamp : 1740556447.872344 ~ 1740556467.8826854
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556467882
+compose-post-service : 436.407
+user-service : 99.282
+media-service : 90.186
+nginx-web-server : 341.628
+user-mention-service : 382.869
+unique-id-service : 92.415
+social-graph-service : 276.27
+home-timeline-service : 189.153
+post-storage-service : 172.083
+url-shorten-service : 293.463
+text-service : 596.415
+user-timeline-service : 241.419
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556447872&end=1740556467882
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5335443732999862
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556457882685&end=1740556467882685
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 3}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(3*wrk2_api_post_compose, 0.533544373299986)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.177848124433329}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0975657817288557}}*************
+===========================================62===========================================
+새로운 timestamp : 1740556467.8826854 ~ 1740556487.911202
+이번 timestamp : 1740556457.8751256 ~ 1740556477.9000897
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556477900
+compose-post-service : 439.137
+user-service : 99.471
+media-service : 90.444
+nginx-web-server : 342.522
+user-mention-service : 383.763
+unique-id-service : 92.673
+social-graph-service : 276.843
+home-timeline-service : 189.588
+post-storage-service : 172.602
+url-shorten-service : 294.219
+text-service : 597.849
+user-timeline-service : 241.992
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556457875&end=1740556477900
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1377735089000058
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556467900089&end=1740556477900089
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 15}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(15*wrk2_api_post_compose, 1.13777350890001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0758515672600007}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0953943602819702}}*************
+===========================================63===========================================
+새로운 timestamp : 1740556477.9000897 ~ 1740556497.9167438
+이번 timestamp : 1740556467.8826854 ~ 1740556487.911202
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556487911
+compose-post-service : 442.287
+user-service : 99.723
+media-service : 90.765
+nginx-web-server : 343.407
+user-mention-service : 384.585
+unique-id-service : 92.994
+social-graph-service : 277.542
+home-timeline-service : 190.098
+post-storage-service : 173.112
+url-shorten-service : 294.981
+text-service : 599.49
+user-timeline-service : 242.628
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556467882&end=1740556487911
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.2568970676999864
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556477911202&end=1740556487911202
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.25689706769999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0966843898230762}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0955233632360808}}*************
+===========================================64===========================================
+새로운 timestamp : 1740556487.911202 ~ 1740556507.942695
+이번 timestamp : 1740556477.9000897 ~ 1740556497.9167438
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556497916
+compose-post-service : 444.177
+user-service : 99.798
+media-service : 90.906
+nginx-web-server : 343.968
+user-mention-service : 385.107
+unique-id-service : 93.135
+social-graph-service : 277.989
+home-timeline-service : 190.368
+post-storage-service : 173.313
+url-shorten-service : 295.374
+text-service : 600.315
+user-timeline-service : 242.958
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556477900&end=1740556497916
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6932129988000245
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556487916743&end=1740556497916743
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.693212998800025)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0990304284000036}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0958740697524731}}*************
+===========================================65===========================================
+새로운 timestamp : 1740556497.9167438 ~ 1740556517.9518225
+이번 timestamp : 1740556487.911202 ~ 1740556507.942695
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556507942
+compose-post-service : 445.866
+user-service : 99.876
+media-service : 90.984
+nginx-web-server : 344.256
+user-mention-service : 385.47
+unique-id-service : 93.213
+social-graph-service : 278.28
+home-timeline-service : 190.587
+post-storage-service : 173.466
+url-shorten-service : 295.665
+text-service : 601.113
+user-timeline-service : 243.183
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556487911&end=1740556507942
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5443085502999883
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556497942694&end=1740556507942694
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.544308550299988)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0777583643285697}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0940624992100828}}*************
+===========================================66===========================================
+새로운 timestamp : 1740556507.942695 ~ 1740556527.938274
+이번 timestamp : 1740556497.9167438 ~ 1740556517.9518225
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556517951
+compose-post-service : 447.207
+user-service : 99.936
+media-service : 91.047
+nginx-web-server : 344.625
+user-mention-service : 385.953
+unique-id-service : 93.276
+social-graph-service : 278.595
+home-timeline-service : 190.839
+post-storage-service : 173.718
+url-shorten-service : 296.097
+text-service : 601.725
+user-timeline-service : 243.435
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556497916&end=1740556517951
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5374912381999966
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556507951822&end=1740556517951822
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.537491238199997)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0597212486888886}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0906283741579633}}*************
+===========================================67===========================================
+새로운 timestamp : 1740556517.9518225 ~ 1740556537.9649127
+이번 timestamp : 1740556507.942695 ~ 1740556527.938274
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556527938
+compose-post-service : 449.913
+user-service : 100.149
+media-service : 91.329
+nginx-web-server : 345.39
+user-mention-service : 386.649
+unique-id-service : 93.489
+social-graph-service : 279.294
+home-timeline-service : 191.328
+post-storage-service : 174.072
+url-shorten-service : 296.796
+text-service : 602.976
+user-timeline-service : 244.065
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556507942&end=1740556527938
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0760588940999982
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556517938274&end=1740556527938274
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 1.0760588941)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.134507361762500}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0950162729184170}}*************
+===========================================68===========================================
+새로운 timestamp : 1740556527.938274 ~ 1740556547.9707272
+이번 timestamp : 1740556517.9518225 ~ 1740556537.9649127
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556537964
+compose-post-service : 452.238
+user-service : 100.284
+media-service : 91.464
+nginx-web-server : 345.987
+user-mention-service : 387.321
+unique-id-service : 93.624
+social-graph-service : 279.762
+home-timeline-service : 191.652
+post-storage-service : 174.414
+url-shorten-service : 297.393
+text-service : 604.251
+user-timeline-service : 244.608
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556517951&end=1740556537964
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9027556444000001
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556527964912&end=1740556537964912
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 0.9027556444)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0644825460285714}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0919629002294324}}*************
+===========================================69===========================================
+새로운 timestamp : 1740556537.9649127 ~ 1740556557.9772623
+이번 timestamp : 1740556527.938274 ~ 1740556547.9707272
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556547970
+compose-post-service : 454.71
+user-service : 100.473
+media-service : 91.653
+nginx-web-server : 346.599
+user-mention-service : 387.996
+unique-id-service : 93.813
+social-graph-service : 280.251
+home-timeline-service : 192.084
+post-storage-service : 174.72
+url-shorten-service : 298.005
+text-service : 605.517
+user-timeline-service : 245.097
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556527938&end=1740556547970
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9472475760000019
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556537970727&end=1740556547970727
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.947247576000002)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.118405947000000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0946072049064892}}*************
+===========================================70===========================================
+새로운 timestamp : 1740556547.9707272 ~ 1740556567.9898837
+이번 timestamp : 1740556537.9649127 ~ 1740556557.9772623
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556557977
+compose-post-service : 456.723
+user-service : 100.542
+media-service : 91.788
+nginx-web-server : 347.067
+user-mention-service : 388.464
+unique-id-service : 93.948
+social-graph-service : 280.653
+home-timeline-service : 192.288
+post-storage-service : 174.855
+url-shorten-service : 298.473
+text-service : 606.372
+user-timeline-service : 245.433
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556537964&end=1740556557977
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6802959864000003
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556547977262&end=1740556557977262
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.6802959864)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0971851409142857}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0948649985072689}}*************
+===========================================71===========================================
+새로운 timestamp : 1740556557.9772623 ~ 1740556577.9961524
+이번 timestamp : 1740556547.9707272 ~ 1740556567.9898837
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556567989
+compose-post-service : 459.381
+user-service : 100.746
+media-service : 91.992
+nginx-web-server : 347.763
+user-mention-service : 389.292
+unique-id-service : 94.152
+social-graph-service : 281.226
+home-timeline-service : 192.777
+post-storage-service : 175.212
+url-shorten-service : 299.103
+text-service : 607.749
+user-timeline-service : 245.985
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556547970&end=1740556567989
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0491484515999936
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556557989883&end=1740556567989883
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.04914845159999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0807037270461531}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0934488713611573}}*************
+===========================================72===========================================
+새로운 timestamp : 1740556567.9898837 ~ 1740556587.9786959
+이번 timestamp : 1740556557.9772623 ~ 1740556577.9961524
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556577996
+compose-post-service : 461.214
+user-service : 100.875
+media-service : 92.19
+nginx-web-server : 348.216
+user-mention-service : 389.808
+unique-id-service : 94.35
+social-graph-service : 281.679
+home-timeline-service : 193.158
+post-storage-service : 175.47
+url-shorten-service : 299.619
+text-service : 608.703
+user-timeline-service : 246.375
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556557977&end=1740556577996
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7509807487000011
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556567996152&end=1740556577996152
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.750980748700001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0938725935875001}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0934912435837916}}*************
+===========================================73===========================================
+새로운 timestamp : 1740556577.9961524 ~ 1740556598.0165272
+이번 timestamp : 1740556567.9898837 ~ 1740556587.9786959
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556587978
+compose-post-service : 464.133
+user-service : 101.079
+media-service : 92.463
+nginx-web-server : 349.074
+user-mention-service : 390.792
+unique-id-service : 94.623
+social-graph-service : 282.405
+home-timeline-service : 193.683
+post-storage-service : 175.869
+url-shorten-service : 300.414
+text-service : 610.134
+user-timeline-service : 247.164
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556567989&end=1740556587978
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.217069612799995
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556577978695&end=1740556587978695
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 1.21706961279999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.110642692072726}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0952063884326851}}*************
+===========================================74===========================================
+새로운 timestamp : 1740556587.9786959 ~ 1740556608.019129
+이번 timestamp : 1740556577.9961524 ~ 1740556598.0165272
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556598016
+compose-post-service : 466.107
+user-service : 101.217
+media-service : 92.601
+nginx-web-server : 349.602
+user-mention-service : 391.389
+unique-id-service : 94.761
+social-graph-service : 282.873
+home-timeline-service : 193.95
+post-storage-service : 176.076
+url-shorten-service : 301.008
+text-service : 611.19
+user-timeline-service : 247.632
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556577996&end=1740556598016
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7861437269000126
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556588016527&end=1740556598016527
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.786143726900013)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0714676115363648}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0928325107430530}}*************
+===========================================75===========================================
+새로운 timestamp : 1740556598.0165272 ~ 1740556618.0279915
+이번 timestamp : 1740556587.9786959 ~ 1740556608.019129
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556608019
+compose-post-service : 468.633
+user-service : 101.418
+media-service : 92.802
+nginx-web-server : 350.373
+user-mention-service : 392.16
+unique-id-service : 94.962
+social-graph-service : 283.389
+home-timeline-service : 194.34
+post-storage-service : 176.406
+url-shorten-service : 301.584
+text-service : 612.402
+user-timeline-service : 248.208
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556587978&end=1740556608019
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9892278663000067
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556598019129&end=1740556608019129
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.989227866300007)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0899298060272734}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0925422402714751}}*************
+===========================================76===========================================
+새로운 timestamp : 1740556608.019129 ~ 1740556628.0350094
+이번 timestamp : 1740556598.0165272 ~ 1740556618.0279915
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556618027
+compose-post-service : 469.464
+user-service : 101.418
+media-service : 92.802
+nginx-web-server : 350.442
+user-mention-service : 392.355
+unique-id-service : 94.962
+social-graph-service : 283.584
+home-timeline-service : 194.472
+post-storage-service : 176.406
+url-shorten-service : 301.779
+text-service : 612.726
+user-timeline-service : 248.277
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556598016&end=1740556618027
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.24039995299999553
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556608027991&end=1740556618027991
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 3}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(3*wrk2_api_post_compose, 0.240399952999996)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0801333176666653}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0913013480109941}}*************
+===========================================77===========================================
+새로운 timestamp : 1740556618.0279915 ~ 1740556638.0481725
+이번 timestamp : 1740556608.019129 ~ 1740556628.0350094
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556628035
+compose-post-service : 471.609
+user-service : 101.631
+media-service : 92.946
+nginx-web-server : 350.958
+user-mention-service : 392.949
+unique-id-service : 95.166
+social-graph-service : 283.977
+home-timeline-service : 194.883
+post-storage-service : 176.679
+url-shorten-service : 302.313
+text-service : 613.875
+user-timeline-service : 248.748
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556608019&end=1740556628035
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8428350590999928
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556618035009&end=1740556628035009
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.842835059099993)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0842835059099993}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0905995638008946}}*************
+===========================================78===========================================
+새로운 timestamp : 1740556628.0350094 ~ 1740556648.0537655
+이번 timestamp : 1740556618.0279915 ~ 1740556638.0481725
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556638048
+compose-post-service : 472.932
+user-service : 101.697
+media-service : 93.012
+nginx-web-server : 351.345
+user-mention-service : 393.459
+unique-id-service : 95.232
+social-graph-service : 284.301
+home-timeline-service : 195.144
+post-storage-service : 176.814
+url-shorten-service : 302.76
+text-service : 614.517
+user-timeline-service : 249.006
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556618027&end=1740556638048
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5364148205000118
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556628048172&end=1740556638048172
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.536414820500012)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0670518525625015}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0882447926770553}}*************
+===========================================79===========================================
+새로운 timestamp : 1740556638.0481725 ~ 1740556658.0704346
+이번 timestamp : 1740556628.0350094 ~ 1740556648.0537655
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556648053
+compose-post-service : 475.701
+user-service : 101.913
+media-service : 93.306
+nginx-web-server : 352.254
+user-mention-service : 394.437
+unique-id-service : 95.448
+social-graph-service : 284.862
+home-timeline-service : 195.57
+post-storage-service : 177.315
+url-shorten-service : 303.462
+text-service : 615.972
+user-timeline-service : 249.72
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556628035&end=1740556648053
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.165042757299993
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556638053765&end=1740556648053765
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 1.16504275729999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.129449195255554}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0923652329349052}}*************
+===========================================80===========================================
+새로운 timestamp : 1740556648.0537655 ~ 1740556668.0608943
+이번 timestamp : 1740556638.0481725 ~ 1740556658.0704346
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556658070
+compose-post-service : 477.672
+user-service : 102.117
+media-service : 93.36
+nginx-web-server : 352.71
+user-mention-service : 394.992
+unique-id-service : 95.502
+social-graph-service : 285.198
+home-timeline-service : 195.894
+post-storage-service : 177.519
+url-shorten-service : 303.852
+text-service : 616.818
+user-timeline-service : 250.122
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556638048&end=1740556658070
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6932129987999956
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556648070434&end=1740556658070434
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.693212998799996)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0770236665333329}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0908310762947480}}*************
+===========================================81===========================================
+새로운 timestamp : 1740556658.0704346 ~ 1740556678.088691
+이번 timestamp : 1740556648.0537655 ~ 1740556668.0608943
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556668060
+compose-post-service : 480.129
+user-service : 102.372
+media-service : 93.555
+nginx-web-server : 353.703
+user-mention-service : 395.796
+unique-id-service : 95.757
+social-graph-service : 285.759
+home-timeline-service : 196.332
+post-storage-service : 177.834
+url-shorten-service : 304.473
+text-service : 617.994
+user-timeline-service : 250.683
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556648053&end=1740556668060
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0322845743000069
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556658060894&end=1740556668060894
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.03228457430001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0737346124500007}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0891214299102733}}*************
+===========================================82===========================================
+새로운 timestamp : 1740556668.0608943 ~ 1740556688.108942
+이번 timestamp : 1740556658.0704346 ~ 1740556678.088691
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556678088
+compose-post-service : 482.283
+user-service : 102.51
+media-service : 93.693
+nginx-web-server : 354.195
+user-mention-service : 396.549
+unique-id-service : 95.895
+social-graph-service : 286.23
+home-timeline-service : 196.74
+post-storage-service : 178.122
+url-shorten-service : 304.965
+text-service : 618.993
+user-timeline-service : 251.178
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556658070&end=1740556678088
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8331472998000009
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556668088691&end=1740556678088691
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.833147299800001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.138857883300000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0940950752492460}}*************
+===========================================83===========================================
+새로운 timestamp : 1740556678.088691 ~ 1740556698.0805423
+이번 timestamp : 1740556668.0608943 ~ 1740556688.108942
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556688108
+compose-post-service : 484.233
+user-service : 102.636
+media-service : 93.819
+nginx-web-server : 354.807
+user-mention-service : 397.284
+unique-id-service : 96.072
+social-graph-service : 286.668
+home-timeline-service : 197.13
+post-storage-service : 178.422
+url-shorten-service : 305.583
+text-service : 620.094
+user-timeline-service : 251.622
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556668060&end=1740556688108
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8392470001000062
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556678108942&end=1740556688108942
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.839247000100006)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0932496666777784}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0940105343920992}}*************
+===========================================84===========================================
+새로운 timestamp : 1740556688.108942 ~ 1740556708.0844152
+이번 timestamp : 1740556678.088691 ~ 1740556698.0805423
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556698080
+compose-post-service : 485.88
+user-service : 102.762
+media-service : 93.885
+nginx-web-server : 355.194
+user-mention-service : 397.725
+unique-id-service : 96.207
+social-graph-service : 287.04
+home-timeline-service : 197.388
+post-storage-service : 178.617
+url-shorten-service : 306.024
+text-service : 620.862
+user-timeline-service : 251.949
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556678088&end=1740556698080
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.617504953899991
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556688080542&end=1740556698080542
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.617504953899991)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0771881192374989}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0923282928766392}}*************
+===========================================85===========================================
+새로운 timestamp : 1740556698.0805423 ~ 1740556718.109767
+이번 timestamp : 1740556688.108942 ~ 1740556708.0844152
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556708084
+compose-post-service : 487.776
+user-service : 102.906
+media-service : 94.023
+nginx-web-server : 355.545
+user-mention-service : 398.277
+unique-id-service : 96.345
+social-graph-service : 287.454
+home-timeline-service : 197.736
+post-storage-service : 178.824
+url-shorten-service : 306.507
+text-service : 621.681
+user-timeline-service : 252.231
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556688108&end=1740556708084
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6903425516000041
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556698084415&end=1740556708084415
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.690342551600004)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0690342551600004}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0899988891049753}}*************
+===========================================86===========================================
+새로운 timestamp : 1740556708.0844152 ~ 1740556728.1045833
+이번 timestamp : 1740556698.0805423 ~ 1740556718.109767
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556718109
+compose-post-service : 489.699
+user-service : 103.05
+media-service : 94.098
+nginx-web-server : 355.962
+user-mention-service : 398.763
+unique-id-service : 96.489
+social-graph-service : 288.009
+home-timeline-service : 198.018
+post-storage-service : 179.037
+url-shorten-service : 306.993
+text-service : 622.578
+user-timeline-service : 252.513
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556698080&end=1740556718109
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7061300111999894
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556708109766&end=1740556718109766
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 5}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(5*wrk2_api_post_compose, 0.706130011199989)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.141226002239998}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0951216004184776}}*************
+===========================================87===========================================
+새로운 timestamp : 1740556718.109767 ~ 1740556738.1220288
+이번 timestamp : 1740556708.0844152 ~ 1740556728.1045833
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556728104
+compose-post-service : 492.207
+user-service : 103.299
+media-service : 94.224
+nginx-web-server : 356.775
+user-mention-service : 399.573
+unique-id-service : 96.678
+social-graph-service : 288.753
+home-timeline-service : 198.51
+post-storage-service : 179.478
+url-shorten-service : 307.737
+text-service : 623.994
+user-timeline-service : 253.074
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556708084&end=1740556728104
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0875406829000038
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556718104583&end=1740556728104583
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.0875406829)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0776814773500000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0933775881116298}}*************
+===========================================88===========================================
+새로운 timestamp : 1740556728.1045833 ~ 1740556748.1315463
+이번 timestamp : 1740556718.109767 ~ 1740556738.1220288
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556738122
+compose-post-service : 495.333
+user-service : 103.551
+media-service : 94.413
+nginx-web-server : 357.843
+user-mention-service : 400.761
+unique-id-service : 96.93
+social-graph-service : 289.686
+home-timeline-service : 199.077
+post-storage-service : 180.045
+url-shorten-service : 308.682
+text-service : 625.731
+user-timeline-service : 253.581
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556718109&end=1740556738122
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.3552098843000038
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556728122028&end=1740556738122028
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 15}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(15*wrk2_api_post_compose, 1.3552098843)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0903473256200000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0930745618624668}}*************
+===========================================89===========================================
+새로운 timestamp : 1740556738.1220288 ~ 1740556758.1302733
+이번 timestamp : 1740556728.1045833 ~ 1740556748.1315463
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556748131
+compose-post-service : 497.382
+user-service : 103.755
+media-service : 94.542
+nginx-web-server : 358.359
+user-mention-service : 401.418
+unique-id-service : 97.134
+social-graph-service : 290.202
+home-timeline-service : 199.401
+post-storage-service : 180.318
+url-shorten-service : 309.198
+text-service : 626.805
+user-timeline-service : 253.974
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556728104&end=1740556748131
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8198714814999868
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556738131546&end=1740556748131546
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.819871481499987)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0819871481499987}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0919658204912200}}*************
+===========================================90===========================================
+새로운 timestamp : 1740556748.1315463 ~ 1740556768.1414046
+이번 timestamp : 1740556738.1220288 ~ 1740556758.1302733
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556758130
+compose-post-service : 499.236
+user-service : 103.884
+media-service : 94.677
+nginx-web-server : 358.812
+user-mention-service : 401.931
+unique-id-service : 97.332
+social-graph-service : 290.652
+home-timeline-service : 199.722
+post-storage-service : 180.516
+url-shorten-service : 309.711
+text-service : 627.699
+user-timeline-service : 254.295
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556738122&end=1740556758130
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7151001586999999
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556748130273&end=1740556758130273
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.7151001587)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0893875198375000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0917079904258480}}*************
+===========================================91===========================================
+새로운 timestamp : 1740556758.1302733 ~ 1740556778.1520796
+이번 timestamp : 1740556748.1315463 ~ 1740556768.1414046
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556768141
+compose-post-service : 502.779
+user-service : 104.154
+media-service : 94.881
+nginx-web-server : 359.988
+user-mention-service : 403.11
+unique-id-service : 97.602
+social-graph-service : 291.636
+home-timeline-service : 200.319
+post-storage-service : 181.113
+url-shorten-service : 310.638
+text-service : 629.64
+user-timeline-service : 255.156
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556748131&end=1740556768141
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.5008850797000073
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556758141404&end=1740556768141404
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 16}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(16*wrk2_api_post_compose, 1.50088507970001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0938053174812506}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0919177231313883}}*************
+===========================================92===========================================
+새로운 timestamp : 1740556768.1414046 ~ 1740556788.1616201
+이번 timestamp : 1740556758.1302733 ~ 1740556778.1520796
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556778152
+compose-post-service : 505.008
+user-service : 104.346
+media-service : 95.073
+nginx-web-server : 360.432
+user-mention-service : 403.755
+unique-id-service : 97.731
+social-graph-service : 292.077
+home-timeline-service : 200.649
+post-storage-service : 181.368
+url-shorten-service : 311.145
+text-service : 630.669
+user-timeline-service : 255.534
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556758130&end=1740556778152
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8098249162999933
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556768152079&end=1740556778152079
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.809824916299993)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0899805462555548}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0917240054438049}}*************
+===========================================93===========================================
+새로운 timestamp : 1740556778.1520796 ~ 1740556798.1440191
+이번 timestamp : 1740556768.1414046 ~ 1740556788.1616201
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556788161
+compose-post-service : 506.817
+user-service : 104.532
+media-service : 95.193
+nginx-web-server : 360.852
+user-mention-service : 404.295
+unique-id-service : 97.851
+social-graph-service : 292.44
+home-timeline-service : 200.895
+post-storage-service : 181.674
+url-shorten-service : 311.628
+text-service : 631.515
+user-timeline-service : 255.96
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556768141&end=1740556788161
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7014655345000061
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556778161620&end=1740556788161620
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 10}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(10*wrk2_api_post_compose, 0.701465534500006)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0701465534500006}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0895662602444245}}*************
+===========================================94===========================================
+새로운 timestamp : 1740556788.1616201 ~ 1740556808.1690874
+이번 timestamp : 1740556778.1520796 ~ 1740556798.1440191
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556798144
+compose-post-service : 509.577
+user-service : 104.736
+media-service : 95.397
+nginx-web-server : 361.731
+user-mention-service : 405.162
+unique-id-service : 97.995
+social-graph-service : 293.106
+home-timeline-service : 201.306
+post-storage-service : 182.016
+url-shorten-service : 312.3
+text-service : 632.892
+user-timeline-service : 256.632
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556778152&end=1740556798144
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1000988894000074
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556788144019&end=1740556798144019
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 1.10009888940001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.122233209933334}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0928329552133155}}*************
+===========================================95===========================================
+새로운 timestamp : 1740556798.1440191 ~ 1740556818.177005
+이번 timestamp : 1740556788.1616201 ~ 1740556808.1690874
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556808169
+compose-post-service : 512.1
+user-service : 104.991
+media-service : 95.592
+nginx-web-server : 362.415
+user-mention-service : 405.972
+unique-id-service : 98.19
+social-graph-service : 293.61
+home-timeline-service : 201.69
+post-storage-service : 182.34
+url-shorten-service : 312.915
+text-service : 634.152
+user-timeline-service : 257.076
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556788161&end=1740556808169
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9798989129000082
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556798169087&end=1740556808169087
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.979898912900008)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0890817193545462}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0924578316274386}}*************
+===========================================96===========================================
+새로운 timestamp : 1740556808.1690874 ~ 1740556828.1950812
+이번 timestamp : 1740556798.1440191 ~ 1740556818.177005
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556818177
+compose-post-service : 513.633
+user-service : 105.126
+media-service : 95.727
+nginx-web-server : 362.934
+user-mention-service : 406.428
+unique-id-service : 98.325
+social-graph-service : 294.0
+home-timeline-service : 201.951
+post-storage-service : 182.541
+url-shorten-service : 313.368
+text-service : 634.923
+user-timeline-service : 257.4
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556798144&end=1740556818177
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6354452488999899
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556808177005&end=1740556818177005
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.63544524889999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0706050276555544}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0902725512302502}}*************
+===========================================97===========================================
+새로운 timestamp : 1740556818.177005 ~ 1740556838.2104685
+이번 timestamp : 1740556808.1690874 ~ 1740556828.1950812
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556828195
+compose-post-service : 515.871
+user-service : 105.342
+media-service : 95.874
+nginx-web-server : 363.423
+user-mention-service : 407.127
+unique-id-service : 98.541
+social-graph-service : 294.495
+home-timeline-service : 202.236
+post-storage-service : 182.757
+url-shorten-service : 313.932
+text-service : 636.048
+user-timeline-service : 257.895
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556808169&end=1740556828195
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8593401304999935
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556818195081&end=1740556828195081
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.859340130499993)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.122762875785713}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0935215836857965}}*************
+===========================================98===========================================
+새로운 timestamp : 1740556828.1950812 ~ 1740556848.2170846
+이번 timestamp : 1740556818.177005 ~ 1740556838.2104685
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556838210
+compose-post-service : 518.208
+user-service : 105.549
+media-service : 96.081
+nginx-web-server : 364.107
+user-mention-service : 407.802
+unique-id-service : 98.685
+social-graph-service : 295.044
+home-timeline-service : 202.587
+post-storage-service : 183.108
+url-shorten-service : 314.607
+text-service : 637.245
+user-timeline-service : 258.447
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556818177&end=1740556838210
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.948323993700007
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556828210468&end=1740556838210468
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 0.948323993700007)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0677374281214291}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0909431681293597}}*************
+===========================================99===========================================
+새로운 timestamp : 1740556838.2104685 ~ 1740556858.2233481
+이번 timestamp : 1740556828.1950812 ~ 1740556848.2170846
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556848217
+compose-post-service : 520.665
+user-service : 105.741
+media-service : 96.279
+nginx-web-server : 364.848
+user-mention-service : 408.609
+unique-id-service : 98.883
+social-graph-service : 295.605
+home-timeline-service : 203.025
+post-storage-service : 183.426
+url-shorten-service : 315.231
+text-service : 638.493
+user-timeline-service : 258.945
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556828195&end=1740556848217
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.990304283999995
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556838217084&end=1740556848217084
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 0.990304283999995)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0825253569999996}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0901013870164237}}*************
+===========================================100===========================================
+새로운 timestamp : 1740556848.2170846 ~ 1740556868.2358472
+이번 timestamp : 1740556838.2104685 ~ 1740556858.2233481
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556858223
+compose-post-service : 522.837
+user-service : 105.87
+media-service : 96.477
+nginx-web-server : 365.436
+user-mention-service : 409.26
+unique-id-service : 99.081
+social-graph-service : 296.193
+home-timeline-service : 203.415
+post-storage-service : 183.687
+url-shorten-service : 315.882
+text-service : 639.525
+user-timeline-service : 259.467
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556838210&end=1740556858223
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8826625139999908
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556848223348&end=1740556858223348
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 5}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(5*wrk2_api_post_compose, 0.882662513999991)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.176532502799998}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0987444985947812}}*************
+===========================================101===========================================
+새로운 timestamp : 1740556858.2233481 ~ 1740556878.2549074
+이번 timestamp : 1740556848.2170846 ~ 1740556868.2358472
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556868235
+compose-post-service : 524.313
+user-service : 105.999
+media-service : 96.606
+nginx-web-server : 366.03
+user-mention-service : 409.722
+unique-id-service : 99.21
+social-graph-service : 296.589
+home-timeline-service : 203.613
+post-storage-service : 183.885
+url-shorten-service : 316.269
+text-service : 640.305
+user-timeline-service : 259.734
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556848217&end=1740556868235
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6153521184999909
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556858235847&end=1740556868235847
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.615352118499991)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0769190148124989}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0965619502165529}}*************
+===========================================102===========================================
+새로운 timestamp : 1740556868.2358472 ~ 1740556888.263748
+이번 timestamp : 1740556858.2233481 ~ 1740556878.2549074
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556878254
+compose-post-service : 526.752
+user-service : 106.266
+media-service : 96.81
+nginx-web-server : 366.744
+user-mention-service : 410.562
+unique-id-service : 99.414
+social-graph-service : 297.174
+home-timeline-service : 204.069
+post-storage-service : 184.215
+url-shorten-service : 316.92
+text-service : 641.469
+user-timeline-service : 260.319
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556858223&end=1740556878254
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0093209967000245
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556868254907&end=1740556878254907
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.00932099670002)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0776400766692323}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0946697628618209}}*************
+===========================================103===========================================
+새로운 timestamp : 1740556878.2549074 ~ 1740556898.2878554
+이번 timestamp : 1740556868.2358472 ~ 1740556888.263748
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556888263
+compose-post-service : 529.524
+user-service : 106.473
+media-service : 97.017
+nginx-web-server : 367.413
+user-mention-service : 411.294
+unique-id-service : 99.621
+social-graph-service : 297.777
+home-timeline-service : 204.537
+post-storage-service : 184.62
+url-shorten-service : 317.592
+text-service : 642.858
+user-timeline-service : 260.922
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556868235&end=1740556888263
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.068523970199986
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556878263748&end=1740556888263748
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 1.06852397019999)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.118724885577777}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0970752751334165}}*************
+===========================================104===========================================
+새로운 timestamp : 1740556888.263748 ~ 1740556908.2806273
+이번 timestamp : 1740556878.2549074 ~ 1740556898.2878554
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556898287
+compose-post-service : 531.219
+user-service : 106.671
+media-service : 97.215
+nginx-web-server : 367.992
+user-mention-service : 411.942
+unique-id-service : 99.759
+social-graph-service : 298.299
+home-timeline-service : 204.864
+post-storage-service : 184.887
+url-shorten-service : 318.114
+text-service : 643.773
+user-timeline-service : 261.318
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556878254&end=1740556898287
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7660505965000136
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556888287855&end=1740556898287855
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 9}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(9*wrk2_api_post_compose, 0.766050596500014)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0851167329444460}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0958794209145194}}*************
+===========================================105===========================================
+새로운 timestamp : 1740556898.2878554 ~ 1740556918.2794456
+이번 timestamp : 1740556888.263748 ~ 1740556908.2806273
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556908280
+compose-post-service : 532.56
+user-service : 106.806
+media-service : 97.284
+nginx-web-server : 368.256
+user-mention-service : 412.332
+unique-id-service : 99.759
+social-graph-service : 298.629
+home-timeline-service : 205.131
+post-storage-service : 184.956
+url-shorten-service : 318.381
+text-service : 644.418
+user-timeline-service : 261.585
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556888263&end=1740556908280
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.4836703531999792
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556898280627&end=1740556908280627
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.483670353199979)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0604587941499974}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0923373582380672}}*************
+===========================================106===========================================
+새로운 timestamp : 1740556908.2806273 ~ 1740556928.2849886
+이번 timestamp : 1740556898.2878554 ~ 1740556918.2794456
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556918279
+compose-post-service : 535.785
+user-service : 107.085
+media-service : 97.5
+nginx-web-server : 369.225
+user-mention-service : 413.424
+unique-id-service : 100.107
+social-graph-service : 299.448
+home-timeline-service : 205.68
+post-storage-service : 185.583
+url-shorten-service : 319.203
+text-service : 646.11
+user-timeline-service : 262.344
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556898287&end=1740556918279
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.363103614100006
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556908279445&end=1740556918279445
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 1.36310361410001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.123918510372728}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0954954734515333}}*************
+===========================================107===========================================
+새로운 timestamp : 1740556918.2794456 ~ 1740556938.3023334
+이번 timestamp : 1740556908.2806273 ~ 1740556928.2849886
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556928284
+compose-post-service : 538.062
+user-service : 107.295
+media-service : 97.635
+nginx-web-server : 369.777
+user-mention-service : 414.171
+unique-id-service : 100.317
+social-graph-service : 299.928
+home-timeline-service : 206.019
+post-storage-service : 185.868
+url-shorten-service : 319.737
+text-service : 647.289
+user-timeline-service : 262.824
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556908280&end=1740556928284
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8884034084000098
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556918284988&end=1740556928284988
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 0.88840340840001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0683387237230777}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0927797984786878}}*************
+===========================================108===========================================
+새로운 timestamp : 1740556928.2849886 ~ 1740556948.3137112
+이번 timestamp : 1740556918.2794456 ~ 1740556938.3023334
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556938302
+compose-post-service : 539.253
+user-service : 107.409
+media-service : 97.695
+nginx-web-server : 370.11
+user-mention-service : 414.561
+unique-id-service : 100.431
+social-graph-service : 300.273
+home-timeline-service : 206.187
+post-storage-service : 186.036
+url-shorten-service : 320.136
+text-service : 647.967
+user-timeline-service : 263.115
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556918279&end=1740556938302
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.508427960300009
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556928302333&end=1740556938302333
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.508427960300009)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0847379933833348}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0919756179691525}}*************
+===========================================109===========================================
+새로운 timestamp : 1740556938.3023334 ~ 1740556958.3286898
+이번 timestamp : 1740556928.2849886 ~ 1740556948.3137112
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556948313
+compose-post-service : 542.253
+user-service : 107.682
+media-service : 97.902
+nginx-web-server : 370.914
+user-mention-service : 415.431
+unique-id-service : 100.638
+social-graph-service : 300.816
+home-timeline-service : 206.805
+post-storage-service : 186.381
+url-shorten-service : 320.874
+text-service : 649.44
+user-timeline-service : 263.658
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556928284&end=1740556948313
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.150690521300001
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556938313711&end=1740556948313711
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 13}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(13*wrk2_api_post_compose, 1.1506905213)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0885146554846154}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0916295217206988}}*************
+===========================================110===========================================
+새로운 timestamp : 1740556948.3137112 ~ 1740556968.332044
+이번 timestamp : 1740556938.3023334 ~ 1740556958.3286898
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556958328
+compose-post-service : 544.053
+user-service : 107.82
+media-service : 98.04
+nginx-web-server : 371.424
+user-mention-service : 415.959
+unique-id-service : 100.776
+social-graph-service : 301.272
+home-timeline-service : 206.997
+post-storage-service : 186.648
+url-shorten-service : 321.33
+text-service : 650.361
+user-timeline-service : 264.114
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556938302&end=1740556958328
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.7176117999999795
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556948328689&end=1740556958328689
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.717611799999979)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.102515971428568}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0927181666914857}}*************
+===========================================111===========================================
+새로운 timestamp : 1740556958.3286898 ~ 1740556978.3168309
+이번 timestamp : 1740556948.3137112 ~ 1740556968.332044
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556968332
+compose-post-service : 545.7
+user-service : 107.949
+media-service : 98.169
+nginx-web-server : 371.742
+user-mention-service : 416.397
+unique-id-service : 100.905
+social-graph-service : 301.644
+home-timeline-service : 207.24
+post-storage-service : 186.903
+url-shorten-service : 321.639
+text-service : 651.039
+user-timeline-service : 264.423
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556948313&end=1740556968332
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5927473468000156
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556958332044&end=1740556968332044
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.592747346800016)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0987912244666693}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0933254724690041}}*************
+===========================================112===========================================
+새로운 timestamp : 1740556968.332044 ~ 1740556988.3438518
+이번 timestamp : 1740556958.3286898 ~ 1740556978.3168309
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556978316
+compose-post-service : 547.509
+user-service : 108.087
+media-service : 98.307
+nginx-web-server : 372.192
+user-mention-service : 416.985
+unique-id-service : 101.043
+social-graph-service : 302.034
+home-timeline-service : 207.522
+post-storage-service : 187.17
+url-shorten-service : 322.107
+text-service : 651.882
+user-timeline-service : 264.753
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556958328&end=1740556978316
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.6985950872999908
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556968316830&end=1740556978316830
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.698595087299991)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0635086442999992}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0903437896521036}}*************
+===========================================113===========================================
+새로운 timestamp : 1740556978.3168309 ~ 1740556998.3625586
+이번 timestamp : 1740556968.332044 ~ 1740556988.3438518
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556988343
+compose-post-service : 549.999
+user-service : 108.276
+media-service : 98.442
+nginx-web-server : 372.816
+user-mention-service : 417.642
+unique-id-service : 101.232
+social-graph-service : 302.658
+home-timeline-service : 207.966
+post-storage-service : 187.485
+url-shorten-service : 322.677
+text-service : 653.151
+user-timeline-service : 265.392
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556968332&end=1740556988343
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9741580185000013
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556978343851&end=1740556988343851
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 11}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(11*wrk2_api_post_compose, 0.974158018500001)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0885598198636365}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0901653926732569}}*************
+===========================================114===========================================
+새로운 timestamp : 1740556988.3438518 ~ 1740557008.367199
+이번 timestamp : 1740556978.3168309 ~ 1740556998.3625586
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740556998362
+compose-post-service : 552.27
+user-service : 108.534
+media-service : 98.637
+nginx-web-server : 373.638
+user-mention-service : 418.278
+unique-id-service : 101.427
+social-graph-service : 303.294
+home-timeline-service : 208.35
+post-storage-service : 187.743
+url-shorten-service : 323.313
+text-service : 654.288
+user-timeline-service : 265.902
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556978316&end=1740556998362
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.9494004113999952
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556988362558&end=1740556998362558
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 0.949400411399995)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0791167009499996}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0890605235009312}}*************
+===========================================115===========================================
+새로운 timestamp : 1740556998.3625586 ~ 1740557018.372643
+이번 timestamp : 1740556988.3438518 ~ 1740557008.367199
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557008367
+compose-post-service : 555.615
+user-service : 108.747
+media-service : 98.988
+nginx-web-server : 374.61
+user-mention-service : 419.319
+unique-id-service : 101.778
+social-graph-service : 304.2
+home-timeline-service : 208.974
+post-storage-service : 188.094
+url-shorten-service : 324.219
+text-service : 656.001
+user-timeline-service : 266.748
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556988343&end=1740557008367
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.3896552507000033
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740556998367199&end=1740557008367199
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 1.3896552507)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.115804604225000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0917349315733380}}*************
+===========================================116===========================================
+새로운 timestamp : 1740557008.367199 ~ 1740557028.3799994
+이번 timestamp : 1740556998.3625586 ~ 1740557018.372643
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557018372
+compose-post-service : 557.727
+user-service : 108.927
+media-service : 99.108
+nginx-web-server : 375.207
+user-mention-service : 419.991
+unique-id-service : 101.898
+social-graph-service : 304.815
+home-timeline-service : 209.346
+post-storage-service : 188.406
+url-shorten-service : 324.702
+text-service : 657.162
+user-timeline-service : 267.06
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740556998362&end=1740557018372
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8439114768000029
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557008372643&end=1740557018372643
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.843911476800003)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.105488934600000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0931103318760043}}*************
+===========================================117===========================================
+새로운 timestamp : 1740557018.372643 ~ 1740557038.3757813
+이번 timestamp : 1740557008.367199 ~ 1740557028.3799994
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557028379
+compose-post-service : 558.735
+user-service : 108.996
+media-service : 99.177
+nginx-web-server : 375.465
+user-mention-service : 420.246
+unique-id-service : 101.967
+social-graph-service : 305.01
+home-timeline-service : 209.481
+post-storage-service : 188.475
+url-shorten-service : 324.897
+text-service : 657.615
+user-timeline-service : 267.189
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557008367&end=1740557028379
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.3473241111999961
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557018379999&end=1740557028379999
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 7}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(7*wrk2_api_post_compose, 0.347324111199996)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0496177301714280}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0887610717055466}}*************
+===========================================118===========================================
+새로운 timestamp : 1740557028.3799994 ~ 1740557048.3869305
+이번 timestamp : 1740557018.372643 ~ 1740557038.3757813
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557038375
+compose-post-service : 560.877
+user-service : 109.131
+media-service : 99.312
+nginx-web-server : 376.065
+user-mention-service : 420.915
+unique-id-service : 102.171
+social-graph-service : 305.541
+home-timeline-service : 209.883
+post-storage-service : 188.877
+url-shorten-service : 325.497
+text-service : 658.596
+user-timeline-service : 267.591
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557018372&end=1740557038375
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.8614929659000055
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557028375781&end=1740557038375781
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.861492965900005)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.143582160983334}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0942431806333254}}*************
+===========================================119===========================================
+새로운 timestamp : 1740557038.3757813 ~ 1740557058.3865576
+이번 timestamp : 1740557028.3799994 ~ 1740557048.3869305
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557048386
+compose-post-service : 563.673
+user-service : 109.335
+media-service : 99.516
+nginx-web-server : 376.782
+user-mention-service : 421.755
+unique-id-service : 102.375
+social-graph-service : 306.258
+home-timeline-service : 210.357
+post-storage-service : 189.279
+url-shorten-service : 326.289
+text-service : 660.123
+user-timeline-service : 268.059
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557028379&end=1740557048386
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1176803785
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557038386930&end=1740557048386930
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 14}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(14*wrk2_api_post_compose, 1.1176803785)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0798343127500000}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0928022938449929}}*************
+===========================================120===========================================
+새로운 timestamp : 1740557048.3869305 ~ 1740557068.3990376
+이번 timestamp : 1740557038.3757813 ~ 1740557058.3865576
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557058386
+compose-post-service : 565.809
+user-service : 109.575
+media-service : 99.696
+nginx-web-server : 377.478
+user-mention-service : 422.514
+unique-id-service : 102.615
+social-graph-service : 306.957
+home-timeline-service : 210.657
+post-storage-service : 189.687
+url-shorten-service : 326.928
+text-service : 661.233
+user-timeline-service : 268.416
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557038375&end=1740557058386
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.928589669199991
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557048386557&end=1740557058386557
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 15}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(15*wrk2_api_post_compose, 0.928589669199991)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0619059779466661}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0897126622551602}}*************
+===========================================121===========================================
+새로운 timestamp : 1740557058.3865576 ~ 1740557078.410911
+이번 timestamp : 1740557048.3869305 ~ 1740557068.3990376
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557068399
+compose-post-service : 569.052
+user-service : 109.908
+media-service : 100.029
+nginx-web-server : 378.411
+user-mention-service : 423.63
+unique-id-service : 102.948
+social-graph-service : 307.887
+home-timeline-service : 211.176
+post-storage-service : 190.143
+url-shorten-service : 327.783
+text-service : 662.934
+user-timeline-service : 269.145
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557048386&end=1740557068399
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.3731501793000027
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557058399037&end=1740557068399037
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 12}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(12*wrk2_api_post_compose, 1.3731501793)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.114429181608333}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0921843141904775}}*************
+===========================================122===========================================
+새로운 timestamp : 1740557068.3990376 ~ 1740557088.42411
+이번 timestamp : 1740557058.3865576 ~ 1740557078.410911
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557078410
+compose-post-service : 571.29
+user-service : 110.1
+media-service : 100.152
+nginx-web-server : 379.047
+user-mention-service : 424.407
+unique-id-service : 103.071
+social-graph-service : 308.463
+home-timeline-service : 211.626
+post-storage-service : 190.395
+url-shorten-service : 328.359
+text-service : 664.08
+user-timeline-service : 269.532
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557058386&end=1740557078410
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.894144302800005
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557068410911&end=1740557078410911
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 8}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(8*wrk2_api_post_compose, 0.894144302800005)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.111768037850001}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0941426865564298}}*************
+===========================================123===========================================
+새로운 timestamp : 1740557078.410911 ~ 1740557098.4316752
+이번 timestamp : 1740557068.3990376 ~ 1740557088.42411
+http://jaeger.default.svc.cluster.local:16686/api/dependencies?lookback=5000&endTs=1740557088424
+compose-post-service : 572.661
+user-service : 110.16
+media-service : 100.278
+nginx-web-server : 379.299
+user-mention-service : 424.716
+unique-id-service : 103.197
+social-graph-service : 308.769
+home-timeline-service : 211.86
+post-storage-service : 190.575
+url-shorten-service : 328.602
+text-service : 664.68
+user-timeline-service : 269.841
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=jaeger-query&start=1740557068399&end=1740557088424
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.4922816947999847
+request 
+head nginx-web-server - group 1
+http://jaeger.default.svc.cluster.local:16686/api/traces?service=nginx-web-server&start=1740557078424109&end=1740557088424109
+http://jaeger.default.svc.cluster.local:5778/sampling?service=nginx-web-server
+정리한 자료 :  {1: {'requests': {'/wrk2-api/post/compose': 6}, 'samplingRate': 1}}
+수집한 equation list : {1: [Eq(6*wrk2_api_post_compose, 0.492281694799985)]}
+Group 1: 1 equations, 1 variables.
+Group 1 solution: {wrk2_api_post_compose: 0.0820469491333308}
+*************최종 request 별 탄소 : {1: {wrk2_api_post_compose: 0.0929331128141199}}*************
+
+# 0.081694729

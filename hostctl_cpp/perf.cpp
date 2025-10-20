@@ -11,7 +11,6 @@
 #include <pthread.h>   // pthread_setaffinity_np
 #include <signal.h>
 #include <linux/perf_event.h>
-#include <chrono>
 #include <vector>
 #include <atomic>
 #include <fstream>
@@ -20,12 +19,8 @@
 #include <iostream>
 #include <cstring>
 #include <sys/time.h>
-#include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
 #include <sched.h>
 #include <errno.h>
 #include "mcoz_ioctl.h"

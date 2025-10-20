@@ -1,13 +1,12 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
-  name: counter-job
+  name: counter
 spec:
-  template:
-    spec:
-      containers:
-      - name: counter
-        image: yunniverse/counter:0.0
-      restartPolicy: Never
-  backoffLimit: 0
-
+  nodeSelector:
+    node: yunni-desktop   # ← 사용자가 말한 라벨 key=value 그대로
+  containers:
+  - name: counter
+    image: yunniverse/counter:0.2
+    command: ["sh","-c","sleep infinity"]
+  restartPolicy: Always

@@ -33,7 +33,7 @@ spec:
                   fieldPath: metadata.namespace
             # Set parameters here; all DaemonSet pods read them from the ConfigMap.
             - name: TARGET_POD
-              value: "default/busybox-8475b6d8cd-ljlnf"
+              value: "social-demo/compose-post-service-6b8465bc45-9g9n5"
             - name: SPEEDUP
-              value: "0.1"
+              value: "0.0"
   backoffLimit: 0
