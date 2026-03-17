@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: coz-control
+  namespace: mcoz-system
+  labels:
+    app: coz
+spec:
+  selector:
+    app: coz
+  ports:
+    - name: http-control
+      protocol: TCP
+      port: 19091
+      targetPort: 19091
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coz-control-local
+  namespace: mcoz-system
+  labels:
+    app: coz
+spec:
+  internalTrafficPolicy: Local
+  selector:
+    app: coz
+  ports:
+    - name: http-control
+      protocol: TCP
+      port: 19091
+      targetPort: 19091
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coz-daemon-local
+  namespace: mcoz-system
+  labels:
+    app: coz
+spec:
+  internalTrafficPolicy: Local
+  selector:
+    app: coz
+  ports:
+    - name: http-daemon
+      protocol: TCP
+      port: 19090
+      targetPort: 19090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coz-daemon-udp-local
+  namespace: mcoz-system
+  labels:
+    app: coz
+spec:
+  internalTrafficPolicy: Local
+  selector:
+    app: coz
+  ports:
+    - name: udp-daemon
+      protocol: UDP
+      port: 19090
+      targetPort: 19090
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coz-delay
+  namespace: mcoz-system
+  labels:
+    app: coz
+spec:
+  clusterIP: None
+  publishNotReadyAddresses: true
+  selector:
+    app: coz
+  ports:
+    - name: udp-delay
+      protocol: UDP
+      port: 9808
+      targetPort: 9808

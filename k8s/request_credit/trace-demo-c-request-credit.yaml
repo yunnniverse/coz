@@ -1,0 +1,155 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c
+  namespace: trace-demo
+spec:
+  selector:
+    matchLabels:
+      app: c
+  template:
+    metadata:
+      labels:
+        app: c
+    spec:
+      containers:
+        - name: app
+          image: python:3.11-slim
+          command: ["python", "-u", "/app/server.py"]
+          env:
+            - name: SERVICE_NAME
+              value: "c"
+            - name: NAMESPACE
+              value: "trace-demo"
+            - name: WORK_SEC
+              value: "0.025"
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: app-script
+              mountPath: /app
+        - name: mcoz-gate
+          image: python:3.11-slim
+          imagePullPolicy: IfNotPresent
+          command: ["python", "-u", "/gate/mcoz_gate.py"]
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: MCOZ_CONTAINER
+              value: "app"
+            - name: MCOZ_GATE_PORT
+              value: "19093"
+            - name: MCOZ_ARM_URL
+              value: "http://coz-daemon-local.mcoz-system.svc.cluster.local:19090/arm"
+            - name: MCOZ_DELAY_NS
+              value: "10000000"
+            - name: MCOZ_COUNT
+              value: "1"
+            - name: MCOZ_MATCH_MODE
+              value: "all"
+            - name: MCOZ_ARM_ACTIVE_DEFAULT
+              value: "false"
+            - name: MCOZ_FAIL_OPEN_ON_ARM_UNAVAILABLE
+              value: "true"
+            - name: MCOZ_ARM_SUSPEND_SEC
+              value: "30"
+          ports:
+            - containerPort: 19093
+              name: mcoz-gate
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 19093
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 19093
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: mcoz-gate-script
+              mountPath: /gate
+      volumes:
+        - name: app-script
+          configMap:
+            name: topology-chain-app
+        - name: mcoz-gate-script
+          configMap:
+            name: mcoz-gate-script
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: c-mcoz-ext-authz
+  namespace: trace-demo
+spec:
+  workloadSelector:
+    labels:
+      app: c
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+              subFilter:
+                name: envoy.filters.http.router
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.ext_authz
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
+            transport_api_version: V3
+            stat_prefix: mcoz_gate
+            failure_mode_allow: true
+            with_request_body:
+              max_request_bytes: 1
+              allow_partial_message: true
+            http_service:
+              path_prefix: /check
+              server_uri:
+                uri: http://127.0.0.1:19093
+                cluster: mcoz_gate_local_c
+                timeout: 0.25s
+              authorization_request:
+                allowed_headers:
+                  patterns:
+                    - exact: ":method"
+                    - exact: ":path"
+                    - exact: "x-request-id"
+                    - exact: "x-mcoz-enable"
+                    - exact: "x-b3-traceid"
+                    - exact: "traceparent"
+              authorization_response:
+                allowed_upstream_headers:
+                  patterns:
+                    - prefix: "x-mcoz-"
+    - applyTo: CLUSTER
+      match:
+        context: SIDECAR_INBOUND
+      patch:
+        operation: ADD
+        value:
+          name: mcoz_gate_local_c
+          type: STATIC
+          connect_timeout: 0.25s
+          load_assignment:
+            cluster_name: mcoz_gate_local_c
+            endpoints:
+              - lb_endpoints:
+                  - endpoint:
+                      address:
+                        socket_address:
+                          address: 127.0.0.1
+                          port_value: 19093

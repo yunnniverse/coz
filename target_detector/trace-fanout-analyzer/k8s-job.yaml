@@ -1,0 +1,68 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: trace-fanout-analyzer
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: analyzer
+        image: python:3.11-slim
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: ENTRY_URL
+          value: "http://a.trace-demo:5000"
+        - name: ENTRY_PATH
+          value: "/entry"
+        - name: JAEGER_URL
+          value: "http://tracing.istio-system"
+        - name: TRACE_ID
+          value: ""
+        - name: POLL_TIMEOUT_S
+          value: "15"
+        - name: POLL_INTERVAL_S
+          value: "0.5"
+        - name: MIN_OVERLAP_MS
+          value: "0.5"
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          set -eu
+          pip install --no-cache-dir -r /app/requirements.txt
+          if [ -n "${TRACE_ID:-}" ]; then
+            python /app/mcoz_trace_analyzer.py \
+              --entry-url "${ENTRY_URL}" \
+              --request-path "${ENTRY_PATH}" \
+              --jaeger-url "${JAEGER_URL}" \
+              --trace-id "${TRACE_ID}" \
+              --poll-timeout-s "${POLL_TIMEOUT_S}" \
+              --poll-interval-s "${POLL_INTERVAL_S}" \
+              --min-overlap-ms "${MIN_OVERLAP_MS}" \
+              --json-out /tmp/trace-analysis.json
+          else
+            python /app/mcoz_trace_analyzer.py \
+              --entry-url "${ENTRY_URL}" \
+              --request-path "${ENTRY_PATH}" \
+              --jaeger-url "${JAEGER_URL}" \
+              --poll-timeout-s "${POLL_TIMEOUT_S}" \
+              --poll-interval-s "${POLL_INTERVAL_S}" \
+              --min-overlap-ms "${MIN_OVERLAP_MS}" \
+              --json-out /tmp/trace-analysis.json
+          fi
+          echo "===== trace-analysis.json ====="
+          cat /tmp/trace-analysis.json
+        volumeMounts:
+        - name: analyzer-script
+          mountPath: /app
+          readOnly: true
+      volumes:
+      - name: analyzer-script
+        configMap:
+          name: trace-fanout-analyzer-script
+          items:
+          - key: mcoz_trace_analyzer.py
+            path: mcoz_trace_analyzer.py
+          - key: requirements.txt
+            path: requirements.txt

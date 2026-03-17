@@ -1,0 +1,65 @@
+25개 (jaeger 제외)
+compose-post-service-5678dddb6d-pz8z9     1/1     Running   0               5d12h
+home-timeline-redis-b8dc78bb7-hjlt2       1/1     Running   0               5d12h
+home-timeline-service-5898dc7594-mvm7k    1/1     Running   0               5d12h
+media-frontend-6d648697c5-nndc4           1/1     Running   0               5d12h
+media-memcached-b68ccb9fd-62vm4           1/1     Running   0               5d12h
+media-mongodb-5d5b875cdf-7jbhj            1/1     Running   0               5d12h
+media-service-7f76448d56-lqg9l            1/1     Running   0               5d12h
+nginx-web-server-556966ff97-dt5hf         1/1     Running   1 (3d ago)      5d12h
+post-storage-memcached-695f758895-tc92d   1/1     Running   0               5d12h
+post-storage-mongodb-6fbf5d988-qxzfh      1/1     Running   0               5d12h
+post-storage-service-7d9ff496f6-q7hng     1/1     Running   0               5d12h
+social-graph-mongodb-847b6df96d-58j29     1/1     Running   0               5d12h
+social-graph-redis-6f46dc855c-m57h5       1/1     Running   0               5d12h
+social-graph-service-7fd77594d6-9hdvg     1/1     Running   0               5d12h
+text-service-6cf464594b-rf6xl             1/1     Running   0               5d12h
+unique-id-service-96c68df9-qt5vm          1/1     Running   0               5d12h
+url-shorten-memcached-6656b9dd74-lb92b    1/1     Running   0               5d12h
+url-shorten-mongodb-5849549d98-98gfg      1/1     Running   0               5d12h
+url-shorten-service-6c7865cf9b-gxhjt      1/1     Running   0               5d12h
+user-memcached-6c87744b86-t4ns8           1/1     Running   0               5d12h
+user-mention-service-648c54454f-r76wp     1/1     Running   0               5d12h
+user-mongodb-7b9779fbd-b9f8w              1/1     Running   0               5d12h
+user-service-757677cfcf-d26lr             1/1     Running   0               5d12h
+user-timeline-mongodb-58c7f7b958-xwqc9    1/1     Running   0               5d12h
+user-timeline-redis-5f679ff86c-67znp      1/1     Running   0               5d12h
+user-timeline-service-5c5868d4b6-x4pz8    1/1     Running   0               5d12h
+
+
+
+
+32개 (jaeger 제외)
+media-cast-info-memcached-6997974b5f-ndt7b        1/1     Running   0          17h
+media-cast-info-mongodb-77c4c6d94b-mtd5c          1/1     Running   0          17h
+media-cast-info-service-7985f7fb-f6xwt            1/1     Running   0          17h
+media-compose-review-memcached-58dbbc9cbf-ht724   1/1     Running   0          17h
+media-compose-review-service-54bbd8454c-hj9m9     1/1     Running   0          17h
+media-jaeger-75754489b5-bjjf2                     1/1     Running   0          17h
+media-movie-id-memcached-d7bd4bb7-frf5v           1/1     Running   0          17h
+media-movie-id-mongodb-75479f887f-wsk5p           1/1     Running   0          17h
+media-movie-id-service-778566f696-l2dfl           1/1     Running   0          17h
+media-movie-info-memcached-5fb6999b8f-gglh4       1/1     Running   0          17h
+media-movie-info-mongodb-7667c59cb8-rtwp2         1/1     Running   0          17h
+media-movie-info-service-7744b56d87-8ktjc         1/1     Running   0          17h
+media-movie-review-mongodb-7d4cdd95d8-zjklm       1/1     Running   0          17h
+media-movie-review-redis-6d9595df9f-zktnq         1/1     Running   0          17h
+media-movie-review-service-cdbf7dc5-vlc7j         1/1     Running   0          17h
+media-nginx-web-server-557d7768c-wswjz            1/1     Running   0          17h
+media-page-service-cd54d4856-x6qlx                1/1     Running   0          17h
+media-plot-memcached-867fd87989-q5l6f             1/1     Running   0          17h
+media-plot-mongodb-7757d885b8-r55qx               1/1     Running   0          17h
+media-plot-service-555bb78564-776cd               1/1     Running   0          17h
+media-rating-redis-75c5f5fd49-t8x7m               1/1     Running   0          17h
+media-rating-service-9d7576dfd-t7tpb              1/1     Running   0          17h
+media-review-storage-memcached-76dd6d5859-56qk8   1/1     Running   0          17h
+media-review-storage-mongodb-f698997c7-bhx2j      1/1     Running   0          17h
+media-review-storage-service-5bf9d498b8-6f298     1/1     Running   0          17h
+media-text-service-66df57bf88-6zc4g               1/1     Running   0          17h
+media-unique-id-service-69f776976c-hvjtj          1/1     Running   0          17h
+media-user-memcached-cbf8c8c9c-hqtll              1/1     Running   0          17h
+media-user-mongodb-6964d5bb96-2krzr               1/1     Running   0          17h
+media-user-review-mongodb-85ccc4bd6f-24z85        1/1     Running   0          17h
+media-user-review-redis-558f76b88b-4l8zk          1/1     Running   0          17h
+media-user-review-service-5c8b9fdd68-x8zsx        1/1     Running   0          17h
+media-user-service-7577d7f78d-qf2pf               1/1     Running   0          17h

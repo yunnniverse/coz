@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coz-sync-deprecated
+  namespace: mcoz-system
+data:
+  note: "deprecated. use mcoz control API (/start, /stop, /status) instead of coz-sync polling."

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: c
+  namespace: trace-demo
+spec:
+  selector:
+    matchLabels:
+      app: c
+  template:
+    metadata:
+      labels:
+        app: c
+    spec:
+      containers:
+        - name: mcoz-gate
+          $patch: delete
+      volumes:
+        - name: mcoz-gate-script
+          $patch: delete

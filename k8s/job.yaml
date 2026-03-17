@@ -10,7 +10,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: trigger
-          image: yunniverse/mcoz:2.5 ## 뭐가 문제진 모르겠는데.. 절대 바꾸지 말것.. 지금이.. 조하..
+          image: yunniverse/mcoz:3.9
           imagePullPolicy: IfNotPresent
           command: ["bash","-lc"]
           args:
@@ -20,20 +20,27 @@ spec:
                 echo "[coz-trigger] ERROR: TARGET_POD env not set (expected format NAMESPACE/POD)" >&2
                 exit 1
               fi
-              echo "[coz-trigger] Signaling start for DaemonSet pods via ConfigMap $NAMESPACE/coz-sync (targetPod='${TARGET_POD}')"
-              kubectl create configmap coz-sync -n "$NAMESPACE" \
-                --from-literal=start=go \
-                --from-literal=targetPod="${TARGET_POD}" \
-                --from-literal=speedup="${SPEEDUP}" \
-                --dry-run=client -o yaml | kubectl apply -f -
+              echo "[coz-trigger] Starting mcoz via control API (targetPod='${TARGET_POD}', speedup='${SPEEDUP}', scope='${SCOPE}')"
+              payload=$(cat <<JSON
+              {"targetPod":"${TARGET_POD}","speedup":"${SPEEDUP}","scope":"${SCOPE}","force":${FORCE}}
+              JSON
+              )
+              curl -sS -X POST "http://coz-control.${NAMESPACE}.svc.cluster.local:${CONTROL_PORT}/start" \
+                -H "Content-Type: application/json" \
+                -d "${payload}"
           env:
             - name: NAMESPACE
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
-            # Set parameters here; all DaemonSet pods read them from the ConfigMap.
             - name: TARGET_POD
-              value: "social-demo/compose-post-service-6b8465bc45-9g9n5"
+              value: "trace-demo/d"
             - name: SPEEDUP
-              value: "0.0"
+              value: "0.25"
+            - name: SCOPE
+              value: "all"
+            - name: FORCE
+              value: "true"
+            - name: CONTROL_PORT
+              value: "19091"
   backoffLimit: 0

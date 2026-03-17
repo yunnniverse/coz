@@ -1,0 +1,3 @@
+This note was superseded by evaluation/real_benchmarks/social/socialNetwork/WORK_DELAY.md.
+
+`*_SPIN_PCT` is no longer supported. Use `*_SPIN_US` only, where each microsecond value is converted to calibrated synthetic CPU work instead of wall-clock spinning.

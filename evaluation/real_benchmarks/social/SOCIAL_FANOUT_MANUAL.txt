@@ -1,0 +1,69 @@
+Social compose-post fanout manual
+
+1. Fanout paths
+
+Path 1
+- compose-post -> text-service
+- compose-post -> user-service
+- compose-post -> media-service
+- compose-post -> unique-id-service
+
+Path 2
+- text-service -> url-shorten-service
+- text-service -> user-mention-service
+
+Note
+- Current tuning target is Path 1 only.
+- Path 2 delays are removed right now.
+
+2. Path 1 equalized set
+
+Goal
+- Make text-service, user-service, media-service, unique-id-service run at similar server-span time.
+
+Delay set in socialNetwork/work-delay-values.yaml
+- TEXT_SERVICE_SPIN_US = 200
+- USER_SERVICE_SPIN_US = 850
+- MEDIA_SERVICE_SPIN_US = 850
+- UNIQUE_ID_SERVICE_SPIN_US = 840
+- URL_SHORTEN_SERVICE_SPIN_US = unset
+- USER_MENTION_SERVICE_SPIN_US = unset
+
+Observed server-span medians from Jaeger
+- text-service ~= 0.897 ms
+- user-service ~= 0.876 ms
+- media-service ~= 0.881 ms
+- unique-id-service ~= 0.874 ms
+
+3. Unique-id boosted set
+
+Goal
+- Keep text/user/media near the old level and make unique-id-service about 1.5x longer.
+
+Delay set in socialNetwork/work-delay-values.yaml
+- TEXT_SERVICE_SPIN_US = 200
+- USER_SERVICE_SPIN_US = 850
+- MEDIA_SERVICE_SPIN_US = 850
+- UNIQUE_ID_SERVICE_SPIN_US = 1260
+- URL_SHORTEN_SERVICE_SPIN_US = unset
+- USER_MENTION_SERVICE_SPIN_US = unset
+
+Observed server-span medians from Jaeger
+- text-service ~= 0.880 ms
+- unique-id-service ~= 1.282 ms
+- unique-id / text ratio ~= 1.46x
+
+4. Current active set
+
+Current deployed setting is the unique-id boosted set:
+- TEXT_SERVICE_SPIN_US = 200
+- USER_SERVICE_SPIN_US = 850
+- MEDIA_SERVICE_SPIN_US = 850
+- UNIQUE_ID_SERVICE_SPIN_US = 1260
+
+5. Reference files
+
+- socialNetwork/work-delay-values.yaml
+- socialNetwork/docker-compose.work-delay.yml
+- socialNetwork/src/ComposePostService/ComposePostHandler.h
+- socialNetwork/src/TextService/TextHandler.h

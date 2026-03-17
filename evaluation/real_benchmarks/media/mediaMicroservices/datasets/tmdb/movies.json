@@ -1,0 +1,143 @@
+[
+  {
+    "poster_path": "/btTdmkgIvOi0FFip1sPuZI2oQG6.jpg", 
+    "title": "Star Wars", 
+    "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.", 
+    "release_date": "1977-05-25", 
+    "popularity": 40.039, 
+    "original_title": "Star Wars", 
+    "id": 11, 
+    "cast": [
+      {
+        "name": "Mark Hamill", 
+        "gender": 2, 
+        "character": "Luke Skywalker", 
+        "order": 0, 
+        "credit_id": "52fe420dc3a36847f8000441", 
+        "cast_id": 3, 
+        "profile_path": "/fk8OfdReNltKZqOk2TZgkofCUFq.jpg", 
+        "id": 2
+      }
+    ], 
+    "vote_count": 11282, 
+    "video": false, 
+    "adult": false, 
+    "vote_average": 8.2, 
+    "original_language": "en", 
+    "backdrop_path": "/4iJfYYoQzZcONB9hNzg0J0wWyPH.jpg", 
+    "genre_ids": [
+      12, 
+      28, 
+      878
+    ]
+  },
+  {
+    "poster_path": "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg", 
+    "title": "Star Wars: The Last Jedi", 
+    "overview": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.", 
+    "release_date": "2017-12-13", 
+    "popularity": 33.091, 
+    "original_title": "Star Wars: The Last Jedi", 
+    "id": 181808, 
+    "cast": [
+      {
+        "name": "Mark Hamill", 
+        "gender": 2, 
+        "character": "Luke Skywalker / Dobbu Scay (voice)", 
+        "order": 2, 
+        "credit_id": "5679cdd4c3a3685bbf000206", 
+        "cast_id": 14, 
+        "profile_path": "/fk8OfdReNltKZqOk2TZgkofCUFq.jpg", 
+        "id": 2
+      }
+    ], 
+    "vote_count": 8361, 
+    "video": false, 
+    "adult": false, 
+    "vote_average": 7, 
+    "original_language": "en", 
+    "backdrop_path": "/baNQpUlmX8shVmJBGHMSL5Y6MBl.jpg", 
+    "genre_ids": [
+      14, 
+      12, 
+      878, 
+      28
+    ]
+  }, 
+  {
+    "poster_path": "/weUSwMdQIa3NaXVzwUoIIcAi85d.jpg", 
+    "title": "Star Wars: The Force Awakens", 
+    "overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.", 
+    "release_date": "2015-12-15", 
+    "popularity": 29.62, 
+    "original_title": "Star Wars: The Force Awakens", 
+    "id": 140607, 
+    "cast": [
+      {
+        "name": "Mark Hamill", 
+        "gender": 2, 
+        "character": "Luke Skywalker", 
+        "order": 11, 
+        "cast_id": 6, 
+        "credit_id": "52fe4a959251416c750e7133", 
+        "profile_path": "/fk8OfdReNltKZqOk2TZgkofCUFq.jpg", 
+        "id": 2
+      }
+    ], 
+    "vote_count": 12473, 
+    "video": false, 
+    "adult": false, 
+    "vote_average": 7.4, 
+    "genre_ids": [
+      28, 
+      12, 
+      878, 
+      14
+    ], 
+    "backdrop_path": "/njv65RTipNSTozFLuF85jL0bcQe.jpg", 
+    "original_language": "en"
+  }, 
+  {
+    "poster_path": "/zm0ODjtfJfJW0W269LqsQl5OhJ8.jpg", 
+    "title": "Batman: The Killing Joke", 
+    "overview": "As Batman hunts for the escaped Joker, the Clown Prince of Crime attacks the Gordon family to prove a diabolical point mirroring his own fall into madness.", 
+    "release_date": "2016-07-21", 
+    "popularity": 28.021, 
+    "original_title": "Batman: The Killing Joke", 
+    "id": 382322, 
+    "cast": [
+      {
+        "name": "Kevin Conroy", 
+        "gender": 2, 
+        "character": "Bruce Wayne / Batman (voice)", 
+        "order": 0, 
+        "cast_id": 1, 
+        "credit_id": "56bde13b925141734d003689", 
+        "profile_path": "/4MVApMiARrecuVjTCPfi6Z7biLW.jpg", 
+        "id": 34947
+      }, 
+      {
+        "name": "Mark Hamill", 
+        "gender": 2, 
+        "character": "The Joker (voice)", 
+        "order": 1, 
+        "cast_id": 0, 
+        "credit_id": "56bde12c925141734d003684", 
+        "profile_path": "/fk8OfdReNltKZqOk2TZgkofCUFq.jpg", 
+        "id": 2
+      }
+    ], 
+    "vote_count": 860, 
+    "video": false, 
+    "adult": false, 
+    "vote_average": 6.3, 
+    "genre_ids": [
+      28, 
+      16, 
+      80, 
+      18
+    ], 
+    "backdrop_path": "/iYrE2zV1DfZ3l7Lh4frHzNwFncq.jpg", 
+    "original_language": "en"
+  }  
+]

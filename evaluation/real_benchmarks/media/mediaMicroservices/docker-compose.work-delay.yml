@@ -1,0 +1,55 @@
+version: "3"
+services:
+  dns-media:
+    volumes:
+      - ./docker/dns-proxy-server/conf:/app/conf
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/resolv.conf:/etc/resolv.conf
+
+  user-service:
+    environment:
+      USER_SERVICE_SPIN_US: "200"
+
+  movie-id-service:
+    environment:
+      MOVIE_ID_SERVICE_SPIN_US: "200"
+
+  text-service:
+    environment:
+      TEXT_SERVICE_SPIN_US: "200"
+
+  unique-id-service:
+    environment:
+      UNIQUE_ID_SERVICE_SPIN_US: "200"
+
+  rating-service:
+    environment:
+      RATING_SERVICE_SPIN_US: "200"
+
+  compose-review-service:
+    environment:
+      COMPOSE_REVIEW_SERVICE_SPIN_US: "200"
+
+  review-storage-service:
+    environment:
+      REVIEW_STORAGE_SERVICE_SPIN_US: "200"
+
+  user-review-service:
+    environment:
+      USER_REVIEW_SERVICE_SPIN_US: "200"
+
+  movie-review-service:
+    environment:
+      MOVIE_REVIEW_SERVICE_SPIN_US: "200"
+
+  movie-info-service:
+    environment:
+      MOVIE_INFO_SERVICE_SPIN_US: "200"
+
+  cast-info-service:
+    environment:
+      CAST_INFO_SERVICE_SPIN_US: "200"
+
+  plot-service:
+    environment:
+      PLOT_SERVICE_SPIN_US: "200"

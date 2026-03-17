@@ -1,0 +1,299 @@
+ * Serving Flask app 'flask_server'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.24.47.61:8080
+[33mPress CTRL+C to quit[0m
+timestamp : 0 ~ 1741374941.254643
+===========================================1===========================================
+새로운 timestamp : 1741374941.254643 ~ 1741374951.3153563
+이번 timestamp : 0 ~ 1741374941.254643
+jaeger_group :  {'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-plot-service': 1, 'media-movie-info-service': 1, 'media-cast-info-service': 1, 'media-movie-info-mongodb': 1, 'media-user-service': 1, 'media-nginx-web-server': 1, 'media-movie-id-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=0&end=1741374941254
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=0&end=1741374941254
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 38.08258180829999
+===========================================2===========================================
+새로운 timestamp : 1741374951.3153563 ~ 1741374961.3465679
+이번 timestamp : 1741374941.254643 ~ 1741374951.3153563
+jaeger_group :  {'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-plot-service': 1, 'media-movie-info-service': 1, 'media-cast-info-service': 1, 'media-movie-info-mongodb': 1, 'media-user-service': 1, 'media-nginx-web-server': 1, 'media-movie-id-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741374941254&end=1741374951315
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741374941254&end=1741374951315
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.15859220779999939
+여기 까지 쓴 시간 : 1.7864258289337158
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741374941254643&end=1741374951315356
+정리한 자료 :  {1: {'requests': {}, 'samplingRate': 1}}
+===========================================3===========================================
+새로운 timestamp : 1741374961.3465679 ~ 1741374991.372457
+이번 timestamp : 1741374951.3153563 ~ 1741374961.3465679
+jaeger_group :  {'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-plot-service': 1, 'media-movie-info-service': 1, 'media-cast-info-service': 1, 'media-movie-info-mongodb': 1, 'media-user-service': 1, 'media-nginx-web-server': 1, 'media-movie-id-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741374951315&end=1741374961346
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741374951315&end=1741374961346
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.22820055240000015
+여기 까지 쓴 시간 : 1.9118199348449707
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741374951315356&end=1741374961346567
+정리한 자료 :  {1: {'requests': {}, 'samplingRate': 1}}
+===========================================4===========================================
+새로운 timestamp : 1741374991.372457 ~ 1741375021.3883991
+이번 timestamp : 1741374961.3465679 ~ 1741374991.372457
+jaeger_group :  {'media-user-memcached': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-plot-service': 1, 'media-movie-id-memcached': 1, 'media-movie-info-service': 1, 'media-cast-info-service': 1, 'media-movie-info-mongodb': 1, 'media-user-service': 1, 'media-nginx-web-server': 1, 'media-movie-id-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-user-review-mongodb': 2, 'media-user-review-redis': 2, 'media-user-review-service': 2, 'media-movie-review-mongodb': 3, 'media-movie-review-service': 3, 'media-movie-review-redis': 3, 'media-rating-redis': 4, 'media-rating-service': 4, 'media-review-storage-mongodb': 5, 'media-review-storage-service': 5}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741374961346&end=1741374991372
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741374961346&end=1741374991372
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 0.5611724276000002
+Group 2: 1.5123668685
+Group 5: 1.6307728154999999
+Group 3: 1.8790664983
+Group 4: 0.26874561909999994
+여기 까지 쓴 시간 : 2.3883323669433594
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-movie-review-service&start=1741374961346567&end=1741374991372457
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741374961346567&end=1741374991372457
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-review-storage-service&start=1741374961346567&end=1741374991372457
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-user-review-service&start=1741374961346567&end=1741374991372457
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-rating-service&start=1741374961346567&end=1741374991372457
+정리한 자료 :  {3: {'requests': {}, 'samplingRate': 1}, 1: {'requests': {}, 'samplingRate': 1}, 5: {'requests': {}, 'samplingRate': 1}, 2: {'requests': {}, 'samplingRate': 1}, 4: {'requests': {}, 'samplingRate': 1}}
+===========================================5===========================================
+새로운 timestamp : 1741375021.3883991 ~ 1741375051.4379632
+이번 timestamp : 1741374991.372457 ~ 1741375021.3883991
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741374991372&end=1741375021388
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741374991372&end=1741375021388
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.676699970700001
+여기 까지 쓴 시간 : 2.5865135192871094
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741374991372457&end=1741375021388399
+정리한 자료 :  {1: {'requests': {'/wrk2-api/plot/write': 23, '/wrk2-api/user/register': 17, '/wrk2-api/movie-info/write': 16, '/wrk2-api/review/compose': 15, '/wrk2-api/cast-info/write': 12, '/wrk2-api/movie/register': 17}, 'samplingRate': 1}}
+===========================================6===========================================
+새로운 timestamp : 1741375051.4379632 ~ 1741375081.4407046
+이번 timestamp : 1741375021.3883991 ~ 1741375051.4379632
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375021388&end=1741375051437
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375021388&end=1741375051437
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.835650984399999
+여기 까지 쓴 시간 : 2.258059024810791
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375021388399&end=1741375051437963
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 15, '/wrk2-api/cast-info/write': 20, '/wrk2-api/review/compose': 15, '/wrk2-api/user/register': 17, '/wrk2-api/movie-info/write': 16, '/wrk2-api/plot/write': 17}, 'samplingRate': 1}}
+===========================================7===========================================
+새로운 timestamp : 1741375081.4407046 ~ 1741375111.4499853
+이번 timestamp : 1741375051.4379632 ~ 1741375081.4407046
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375051437&end=1741375081440
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375051437&end=1741375081440
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.879066498300001
+여기 까지 쓴 시간 : 2.170100688934326
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375051437963&end=1741375081440704
+정리한 자료 :  {1: {'requests': {'/wrk2-api/review/compose': 16, '/wrk2-api/movie-info/write': 15, '/wrk2-api/user/register': 21, '/wrk2-api/plot/write': 19, '/wrk2-api/cast-info/write': 14, '/wrk2-api/movie/register': 15}, 'samplingRate': 1}}
+===========================================8===========================================
+새로운 timestamp : 1741375111.4499853 ~ 1741375141.4553936
+이번 timestamp : 1741375081.4407046 ~ 1741375111.4499853
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375081440&end=1741375111449
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375081440&end=1741375111449
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.7861357701999996
+여기 까지 쓴 시간 : 2.2505943775177
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375081440704&end=1741375111449985
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 14, '/wrk2-api/review/compose': 17, '/wrk2-api/plot/write': 15, '/wrk2-api/movie-info/write': 18, '/wrk2-api/cast-info/write': 19, '/wrk2-api/user/register': 17}, 'samplingRate': 1}}
+===========================================9===========================================
+새로운 timestamp : 1741375141.4553936 ~ 1741375171.4773302
+이번 timestamp : 1741375111.4499853 ~ 1741375141.4553936
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375111449&end=1741375141455
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375111449&end=1741375141455
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.5048319446000002
+여기 까지 쓴 시간 : 2.126521587371826
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375111449985&end=1741375141455393
+정리한 자료 :  {1: {'requests': {'/wrk2-api/review/compose': 16, '/wrk2-api/movie-info/write': 12, '/wrk2-api/user/register': 21, '/wrk2-api/cast-info/write': 17, '/wrk2-api/plot/write': 16, '/wrk2-api/movie/register': 18}, 'samplingRate': 1}}
+===========================================10===========================================
+새로운 timestamp : 1741375171.4773302 ~ 1741375201.5099955
+이번 timestamp : 1741375141.4553936 ~ 1741375171.4773302
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375141455&end=1741375171477
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375141455&end=1741375171477
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.5798223777000007
+여기 까지 쓴 시간 : 2.352874755859375
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375141455393&end=1741375171477330
+정리한 자료 :  {1: {'requests': {'/wrk2-api/user/register': 18, '/wrk2-api/movie-info/write': 12, '/wrk2-api/cast-info/write': 16, '/wrk2-api/plot/write': 18, '/wrk2-api/movie/register': 18, '/wrk2-api/review/compose': 18}, 'samplingRate': 1}}
+===========================================11===========================================
+새로운 timestamp : 1741375201.5099955 ~ 1741375231.4861581
+이번 timestamp : 1741375171.4773302 ~ 1741375201.5099955
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375171477&end=1741375201509
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375171477&end=1741375201509
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.816634271699999
+여기 까지 쓴 시간 : 2.1619415283203125
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375171477330&end=1741375201509995
+정리한 자료 :  {1: {'requests': {'/wrk2-api/user/register': 15, '/wrk2-api/cast-info/write': 23, '/wrk2-api/review/compose': 13, '/wrk2-api/plot/write': 15, '/wrk2-api/movie/register': 21, '/wrk2-api/movie-info/write': 13}, 'samplingRate': 1}}
+===========================================12===========================================
+새로운 timestamp : 1741375231.4861581 ~ 1741375261.5048048
+이번 timestamp : 1741375201.5099955 ~ 1741375231.4861581
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375201509&end=1741375231486
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375201509&end=1741375231486
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.7326736910999998
+여기 까지 쓴 시간 : 2.281157970428467
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375201509995&end=1741375231486158
+정리한 자료 :  {1: {'requests': {'/wrk2-api/user/register': 14, '/wrk2-api/cast-info/write': 18, '/wrk2-api/review/compose': 18, '/wrk2-api/movie/register': 18, '/wrk2-api/plot/write': 16, '/wrk2-api/movie-info/write': 16}, 'samplingRate': 1}}
+===========================================13===========================================
+새로운 timestamp : 1741375261.5048048 ~ 1741375291.5434413
+이번 timestamp : 1741375231.4861581 ~ 1741375261.5048048
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375231486&end=1741375261504
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375231486&end=1741375261504
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.6386665452999996
+여기 까지 쓴 시간 : 2.057462453842163
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375231486158&end=1741375261504805
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie-info/write': 19, '/wrk2-api/review/compose': 16, '/wrk2-api/plot/write': 17, '/wrk2-api/cast-info/write': 18, '/wrk2-api/user/register': 12, '/wrk2-api/movie/register': 18}, 'samplingRate': 1}}
+===========================================14===========================================
+새로운 timestamp : 1741375291.5434413 ~ 1741375321.5720239
+이번 timestamp : 1741375261.5048048 ~ 1741375291.5434413
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375261504&end=1741375291543
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375261504&end=1741375291543
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.9074121644000004
+여기 까지 쓴 시간 : 2.3565731048583984
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375261504805&end=1741375291543441
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 15, '/wrk2-api/plot/write': 20, '/wrk2-api/cast-info/write': 15, '/wrk2-api/user/register': 14, '/wrk2-api/review/compose': 18, '/wrk2-api/movie-info/write': 18}, 'samplingRate': 1}}
+===========================================15===========================================
+새로운 timestamp : 1741375321.5720239 ~ 1741375351.6098151
+이번 timestamp : 1741375291.5434413 ~ 1741375321.5720239
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375291543&end=1741375321572
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375291543&end=1741375321572
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.7186802609999987
+여기 까지 쓴 시간 : 2.3366947174072266
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375291543441&end=1741375321572024
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 13, '/wrk2-api/plot/write': 15, '/wrk2-api/movie-info/write': 18, '/wrk2-api/review/compose': 17, '/wrk2-api/cast-info/write': 16, '/wrk2-api/user/register': 21}, 'samplingRate': 1}}
+===========================================16===========================================
+새로운 timestamp : 1741375351.6098151 ~ 1741375381.637074
+이번 timestamp : 1741375321.5720239 ~ 1741375351.6098151
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375321572&end=1741375351609
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375321572&end=1741375351609
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.7531256273999998
+여기 까지 쓴 시간 : 2.286217451095581
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375321572024&end=1741375351609815
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 18, '/wrk2-api/review/compose': 16, '/wrk2-api/plot/write': 15, '/wrk2-api/movie-info/write': 18, '/wrk2-api/cast-info/write': 18, '/wrk2-api/user/register': 15}, 'samplingRate': 1}}
+===========================================17===========================================
+새로운 timestamp : 1741375381.637074 ~ 1741375411.675664
+이번 timestamp : 1741375351.6098151 ~ 1741375381.637074
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375351609&end=1741375381637
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375351609&end=1741375381637
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.6766999707000003
+여기 까지 쓴 시간 : 2.3948917388916016
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375351609815&end=1741375381637074
+정리한 자료 :  {1: {'requests': {'/wrk2-api/user/register': 14, '/wrk2-api/review/compose': 16, '/wrk2-api/movie/register': 16, '/wrk2-api/cast-info/write': 18, '/wrk2-api/movie-info/write': 20, '/wrk2-api/plot/write': 16}, 'samplingRate': 1}}
+===========================================18===========================================
+새로운 timestamp : 1741375411.675664 ~ 1741375441.698621
+이번 timestamp : 1741375381.637074 ~ 1741375411.675664
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375381637&end=1741375411675
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375381637&end=1741375411675
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.8080229300999993
+여기 까지 쓴 시간 : 2.3886208534240723
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375381637074&end=1741375411675664
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 19, '/wrk2-api/user/register': 15, '/wrk2-api/movie-info/write': 18, '/wrk2-api/review/compose': 19, '/wrk2-api/cast-info/write': 18, '/wrk2-api/plot/write': 11}, 'samplingRate': 1}}
+===========================================19===========================================
+새로운 timestamp : 1741375441.698621 ~ 1741375471.7050903
+이번 timestamp : 1741375411.675664 ~ 1741375441.698621
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375411675&end=1741375441698
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375411675&end=1741375441698
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.552194323400001
+여기 까지 쓴 시간 : 2.530186176300049
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375411675664&end=1741375441698621
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 15, '/wrk2-api/user/register': 18, '/wrk2-api/movie-info/write': 22, '/wrk2-api/cast-info/write': 13, '/wrk2-api/plot/write': 14, '/wrk2-api/review/compose': 18}, 'samplingRate': 1}}
+===========================================20===========================================
+새로운 timestamp : 1741375471.7050903 ~ 1741375501.7312205
+이번 timestamp : 1741375441.698621 ~ 1741375471.7050903
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375441698&end=1741375471705
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375441698&end=1741375471705
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.4567519539999996
+여기 까지 쓴 시간 : 2.3476269245147705
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375441698621&end=1741375471705090
+정리한 자료 :  {1: {'requests': {'/wrk2-api/review/compose': 15, '/wrk2-api/user/register': 17, '/wrk2-api/cast-info/write': 20, '/wrk2-api/movie-info/write': 15, '/wrk2-api/plot/write': 15, '/wrk2-api/movie/register': 18}, 'samplingRate': 1}}
+===========================================21===========================================
+새로운 timestamp : 1741375501.7312205 ~ 1741375531.761918
+이번 timestamp : 1741375471.7050903 ~ 1741375501.7312205
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375471705&end=1741375501731
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375471705&end=1741375501731
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 2.0437584063999994
+여기 까지 쓴 시간 : 2.2672080993652344
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375471705090&end=1741375501731220
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie-info/write': 15, '/wrk2-api/cast-info/write': 20, '/wrk2-api/user/register': 14, '/wrk2-api/review/compose': 18, '/wrk2-api/plot/write': 18, '/wrk2-api/movie/register': 15}, 'samplingRate': 1}}
+===========================================22===========================================
+새로운 timestamp : 1741375531.761918 ~ 1741375561.76553
+이번 timestamp : 1741375501.7312205 ~ 1741375531.761918
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375501731&end=1741375531761
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375501731&end=1741375531761
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.6264671447000014
+여기 까지 쓴 시간 : 2.162667751312256
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375501731220&end=1741375531761918
+정리한 자료 :  {1: {'requests': {'/wrk2-api/cast-info/write': 18, '/wrk2-api/movie-info/write': 14, '/wrk2-api/plot/write': 16, '/wrk2-api/movie/register': 19, '/wrk2-api/review/compose': 18, '/wrk2-api/user/register': 15}, 'samplingRate': 1}}
+===========================================23===========================================
+새로운 timestamp : 1741375561.76553 ~ 1741375591.821722
+이번 timestamp : 1741375531.761918 ~ 1741375561.76553
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375531761&end=1741375561765
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375531761&end=1741375561765
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.9350402186999984
+여기 까지 쓴 시간 : 2.3699285984039307
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375531761918&end=1741375561765530
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 14, '/wrk2-api/user/register': 18, '/wrk2-api/movie-info/write': 15, '/wrk2-api/cast-info/write': 17, '/wrk2-api/review/compose': 21, '/wrk2-api/plot/write': 15}, 'samplingRate': 1}}
+===========================================24===========================================
+새로운 timestamp : 1741375591.821722 ~ 1741375621.8437996
+이번 timestamp : 1741375561.76553 ~ 1741375591.821722
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375561765&end=1741375591821
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375561765&end=1741375591821
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.8643554564000007
+여기 까지 쓴 시간 : 2.361520290374756
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375561765530&end=1741375591821722
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 17, '/wrk2-api/review/compose': 20, '/wrk2-api/user/register': 15, '/wrk2-api/plot/write': 16, '/wrk2-api/cast-info/write': 16, '/wrk2-api/movie-info/write': 16}, 'samplingRate': 1}}
+===========================================25===========================================
+새로운 timestamp : 1741375621.8437996 ~ 1741375651.872381
+이번 timestamp : 1741375591.821722 ~ 1741375621.8437996
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375591821&end=1741375621843
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375591821&end=1741375621843
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.0394606922999985
+여기 까지 쓴 시간 : 2.4727401733398438
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375591821722&end=1741375621843799
+정리한 자료 :  {1: {'requests': {'/wrk2-api/movie/register': 3, '/wrk2-api/review/compose': 3, '/wrk2-api/movie-info/write': 3, '/wrk2-api/user/register': 3, '/wrk2-api/plot/write': 3, '/wrk2-api/cast-info/write': 3}, 'samplingRate': 1}}
+===========================================26===========================================
+새로운 timestamp : 1741375651.872381 ~ 1741375681.8842716
+이번 timestamp : 1741375621.8437996 ~ 1741375651.872381
+jaeger_group :  {'media-user-review-redis': 1, 'media-user-service': 1, 'media-movie-id-service': 1, 'media-user-review-mongodb': 1, 'media-movie-info-service': 1, 'media-rating-redis': 1, 'media-movie-info-mongodb': 1, 'media-nginx-web-server': 1, 'media-review-storage-service': 1, 'media-movie-review-redis': 1, 'media-user-review-service': 1, 'media-unique-id-service': 1, 'media-user-mongodb': 1, 'media-movie-id-mongodb': 1, 'media-movie-review-mongodb': 1, 'media-movie-id-memcached': 1, 'media-text-service': 1, 'media-cast-info-mongodb': 1, 'media-plot-mongodb': 1, 'media-compose-review-service': 1, 'media-user-memcached': 1, 'media-plot-service': 1, 'media-cast-info-service': 1, 'media-movie-review-service': 1, 'media-review-storage-mongodb': 1, 'media-rating-service': 1}
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url1_data&start=1741375621843&end=1741375651872
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=url2_data&start=1741375621843&end=1741375651872
+분배 결과(동적 탄소배출량(mg/CO2))---------------------
+Group 1: 1.1058397837999996
+여기 까지 쓴 시간 : 2.1873996257781982
+url : http://jaeger.m.svc.cluster.local:16686/api/traces?service=media-nginx-web-server&start=1741375621843799&end=1741375651872380
+정리한 자료 :  {1: {'requests': {}, 'samplingRate': 1}}

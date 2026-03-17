@@ -4,6 +4,58 @@ set -euo pipefail
 PIDFILE=/var/run/hostctl_cpp.pid
 LOGFILE=/var/log/coz.log
 
+ensure_kubeconfig() {
+  if [[ -n "${KUBECONFIG:-}" && -r "${KUBECONFIG}" ]]; then
+    return 0
+  fi
+  local sa_dir=/var/run/secrets/kubernetes.io/serviceaccount
+  local token_file="${sa_dir}/token"
+  local ca_file="${sa_dir}/ca.crt"
+  local ns_file="${sa_dir}/namespace"
+  if [[ ! -r "$token_file" || ! -r "$ca_file" || ! -r "$ns_file" ]]; then
+    return 0
+  fi
+  if [[ -z "${KUBERNETES_SERVICE_HOST:-}" ]]; then
+    return 0
+  fi
+
+  local cfg=/tmp/kubeconfig-incluster
+  local server="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT_HTTPS:-443}"
+  local token ns
+  token="$(cat "$token_file")"
+  ns="$(cat "$ns_file")"
+  cat >"$cfg" <<EOF
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    certificate-authority: ${ca_file}
+    server: ${server}
+  name: incluster
+contexts:
+- context:
+    cluster: incluster
+    namespace: ${ns}
+    user: sa
+  name: incluster
+current-context: incluster
+users:
+- name: sa
+  user:
+    token: ${token}
+EOF
+  export KUBECONFIG="$cfg"
+}
+
+repo_root_guess() {
+  local script_dir repo_root
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  repo_root="$(cd "${script_dir}/.." 2>/dev/null && pwd || true)"
+  if [[ -n "${repo_root}" && -d "${repo_root}/evaluation" ]]; then
+    echo "${repo_root}"
+  fi
+}
+
 usage() {
   cat <<EOF
 Usage: cozctl <start|stop|status|logs> [options]
@@ -18,9 +70,19 @@ Start options:
   --target-pod NAMESPACE/POD      Explicit pod target.
   --selector   NAMESPACE LABEL    Select first pod with label on this node.
   --speedup FLOAT                 Virtual speedup (default 0.25).
+  --victim-pids CSV               Comma-separated victim PIDs (skip cgroup discovery).
+  --fixed-delay-ns INT            Inject fixed delay(ns) (one-shot unless --request-aware).
+  --period-ms INT                 Tick period in ms (default 5).
+  --victim-finder PATH            Path to cgroup_finder.sh for victim PID discovery.
+  --request-aware                 Request-aware mode (perf threshold + one fixed delay per rearm).
+  --request-credit                Request-credit mode (ext_authz trigger + eBPF consume).
+  --no-refund-on-fail             Deprecated (refund is already disabled by default).
+  --enable-read-hook              Also consume on sys_exit_read(ret>0) (default OFF).
+  --exact-mode                    Alias of --request-aware.
 
 Examples:
   cozctl start --target-pod default/my-pod --speedup 0.25
+  cozctl start --request-credit --fixed-delay-ns 10000000 --speedup 0.0
   cozctl start --selector default app=my-app
   cozctl stop
   cozctl status
@@ -41,13 +103,27 @@ select_pod_on_node() {
 }
 
 start_cmd() {
-  local target_pod="" sel_ns="" sel_label="" speedup="0.25"
+  local target_pod="" sel_ns="" sel_label="" speedup="0.25" victim_pids=""
+  local fixed_delay_ns="" period_ms="5" victim_finder=""
+  local request_aware="false"
+  local request_credit="false"
+  local refund_on_fail="false"
+  local enable_read_hook="false"
   local passthrough=()
   while [[ $# -gt 0 ]]; do
     case "$1" in
       --target-pod) target_pod="$2"; shift 2;;
       --selector) sel_ns="$2"; sel_label="$3"; shift 3;;
       --speedup) speedup="$2"; shift 2;;
+      --victim-pids) victim_pids="$2"; shift 2;;
+      --fixed-delay-ns) fixed_delay_ns="$2"; shift 2;;
+      --period-ms) period_ms="$2"; shift 2;;
+      --victim-finder) victim_finder="$2"; shift 2;;
+      --request-aware) request_aware="true"; shift;;
+      --request-credit) request_credit="true"; shift;;
+      --no-refund-on-fail) refund_on_fail="false"; shift;;
+      --enable-read-hook) enable_read_hook="true"; shift;;
+      --exact-mode) request_aware="true"; shift;;
       -h|--help) usage; exit 0;;
       *) passthrough+=("$1"); shift;;
     esac
@@ -62,13 +138,13 @@ start_cmd() {
     target_pod="$sel_ns/$pod"
   fi
 
-  if [[ -z "$target_pod" ]]; then
+  if [[ -z "$target_pod" && "$request_credit" != "true" ]]; then
     echo "Need --target-pod [NAMESPACE/]POD or --selector NAMESPACE LABEL" >&2
     exit 1
   fi
 
   # Normalize: allow POD only, prefix with our namespace or 'default'
-  if [[ "$target_pod" != */* ]]; then
+  if [[ -n "$target_pod" && "$target_pod" != */* ]]; then
     ns=${NAMESPACE:-}
     if [[ -z "$ns" ]]; then
       # try current kubectl context namespace; fallback default
@@ -78,14 +154,80 @@ start_cmd() {
     target_pod="$ns/$target_pod"
   fi
 
-  echo "[cozctl] starting: target=$target_pod speedup=${speedup}"
+  if [[ "$request_credit" != "true" && -n "$fixed_delay_ns" && -z "$victim_pids" ]]; then
+    local ns pod finder
+    ns="${target_pod%%/*}"
+    pod="${target_pod##*/}"
+    finder="$victim_finder"
+    if [[ -z "$finder" && -n "${MCOZ_CGROUP_FINDER:-}" ]]; then
+      finder="${MCOZ_CGROUP_FINDER}"
+    fi
+    if [[ -z "$finder" ]]; then
+      local repo_root=""
+      repo_root="$(repo_root_guess || true)"
+      for cand in \
+        /opt/mcoz/bin/cgroup_finder.sh \
+        /opt/mcoz/evaluation/sig_vs_ghost/signal/scripts/cgroup_finder.sh \
+        "${repo_root}/evaluation/sig_vs_ghost/signal/scripts/cgroup_finder.sh" \
+        "${repo_root}/evaluation/sig_vs_ghost/signal/script/cgroup_finder.sh"
+      do
+        if [[ -x "$cand" ]]; then
+          finder="$cand"
+          break
+        fi
+      done
+    fi
+    if [[ -z "$finder" ]]; then
+      echo "cgroup_finder.sh not found. pass --victim-pids or --victim-finder." >&2
+      exit 1
+    fi
+
+    local raw_pids rc
+    set +e
+    raw_pids="$("$finder" "$pod" "$ns" 2>/dev/null | awk '/^[0-9]+$/{print $1}' | sort -u | tr '\n' ',' | sed 's/,$//')"
+    rc=$?
+    set -e
+    if [[ $rc -ne 0 || -z "$raw_pids" ]]; then
+      echo "failed to resolve victim pids via $finder for $ns/$pod" >&2
+      exit 1
+    fi
+    victim_pids="$raw_pids"
+    echo "[cozctl] auto victim pids (cgroup_finder): $victim_pids"
+  fi
+
+  echo "[cozctl] starting: target=${target_pod:-<none>} speedup=${speedup} request_credit=${request_credit}"
   mkdir -p "$(dirname "$LOGFILE")" "$(dirname "$PIDFILE")"
   # Run in background; capture hostctl_cpp pid
-  nohup coz container-run \
-    --target-pod "$target_pod" \
-    --speedup "$speedup" \
-    "${passthrough[@]}" \
-    >"$LOGFILE" 2>&1 &
+  cmd=(coz container-run --speedup "$speedup")
+  if [[ -n "$target_pod" ]]; then
+    cmd+=(--target-pod "$target_pod")
+  fi
+  if [[ -n "$victim_pids" ]]; then
+    cmd+=(--victim-pids "$victim_pids")
+  fi
+  if [[ -n "$fixed_delay_ns" ]]; then
+    cmd+=(--fixed-delay-ns "$fixed_delay_ns")
+  fi
+  if [[ -n "$period_ms" ]]; then
+    cmd+=(--period-ms "$period_ms")
+  fi
+  if [[ -n "$victim_finder" ]]; then
+    cmd+=(--victim-finder "$victim_finder")
+  fi
+  if [[ "$request_aware" == "true" ]]; then
+    cmd+=(--request-aware)
+  fi
+  if [[ "$request_credit" == "true" ]]; then
+    cmd+=(--request-credit)
+  fi
+  if [[ "$refund_on_fail" == "false" ]]; then
+    cmd+=(--no-refund-on-fail)
+  fi
+  if [[ "$enable_read_hook" == "true" ]]; then
+    cmd+=(--enable-read-hook)
+  fi
+  cmd+=("${passthrough[@]}")
+  nohup "${cmd[@]}" >"$LOGFILE" 2>&1 &
 
   # Wait briefly, then record the most recent hostctl_cpp pid
   sleep 0.5
@@ -99,21 +241,55 @@ start_cmd() {
 }
 
 stop_cmd() {
-  if [[ -f "$PIDFILE" ]]; then
-    pid=$(cat "$PIDFILE" || true)
-    if [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null; then
-      kill -INT "$pid"
-      echo "[cozctl] sent SIGINT to hostctl_cpp pid=$pid"
+  local hpids=() cpids=()
+  mapfile -t hpids < <(pgrep hostctl_cpp 2>/dev/null || true)
+  mapfile -t cpids < <(pgrep -f "/opt/mcoz/bin/coz container-run" 2>/dev/null || true)
+
+  if [[ ${#hpids[@]} -eq 0 && ${#cpids[@]} -eq 0 ]]; then
+    echo "[cozctl] no running hostctl_cpp/coz container-run found"
+    rm -f "$PIDFILE"
+    return
+  fi
+
+  if [[ ${#hpids[@]} -gt 0 ]]; then
+    kill -INT "${hpids[@]}" 2>/dev/null || true
+    echo "[cozctl] sent SIGINT to hostctl_cpp pids=${hpids[*]}"
+  fi
+  if [[ ${#cpids[@]} -gt 0 ]]; then
+    kill -INT "${cpids[@]}" 2>/dev/null || true
+    echo "[cozctl] sent SIGINT to coz container-run pids=${cpids[*]}"
+  fi
+
+  # wait up to ~2s for graceful shutdown
+  for _ in $(seq 1 20); do
+    local alive=0
+    for pid in "${hpids[@]}" "${cpids[@]}"; do
+      [[ -z "$pid" ]] && continue
+      if kill -0 "$pid" 2>/dev/null; then
+        alive=1
+        break
+      fi
+    done
+    if [[ $alive -eq 0 ]]; then
+      rm -f "$PIDFILE"
       return
     fi
+    sleep 0.1
+  done
+
+  local alive=()
+  for pid in "${hpids[@]}" "${cpids[@]}"; do
+    [[ -z "$pid" ]] && continue
+    if kill -0 "$pid" 2>/dev/null; then
+      alive+=("$pid")
+    fi
+  done
+  if [[ ${#alive[@]} -gt 0 ]]; then
+    kill -TERM "${alive[@]}" 2>/dev/null || true
+    echo "[cozctl] warning: still alive after SIGINT, sent SIGTERM pids=${alive[*]}"
   fi
-  # fallback: try any hostctl_cpp
-  if pid=$(pgrep hostctl_cpp | head -n1); then
-    kill -INT "$pid"
-    echo "[cozctl] sent SIGINT to hostctl_cpp pid=$pid"
-  else
-    echo "[cozctl] no running hostctl_cpp found"
-  fi
+
+  rm -f "$PIDFILE"
 }
 
 status_cmd() {
@@ -133,6 +309,7 @@ logs_cmd() {
 }
 
 main() {
+  ensure_kubeconfig
   if [[ $# -lt 1 ]]; then usage; exit 1; fi
   case "$1" in
     start) shift; start_cmd "$@";;

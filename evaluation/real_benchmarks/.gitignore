@@ -1,0 +1,19 @@
+# Generated runtime outputs
+**/__pycache__/
+**/*.pyc
+**/results/
+
+# Local build artifacts
+**/build/
+**/build-workdelay/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/Makefile
+**/CTestTestfile.cmake
+
+# Local editor files
+**/.vscode/
+
+# Too large for regular GitHub pushes; store separately if needed
+social/socialNetwork/social-spin-v1.tar

@@ -1,0 +1,71 @@
+user-service:
+  container:
+    env:
+      - name: USER_SERVICE_SPIN_US
+        value: "200"
+
+movie-id-service:
+  container:
+    env:
+      - name: MOVIE_ID_SERVICE_SPIN_US
+        value: "200"
+
+text-service:
+  container:
+    env:
+      - name: TEXT_SERVICE_SPIN_US
+        value: "200"
+
+unique-id-service:
+  container:
+    env:
+      - name: UNIQUE_ID_SERVICE_SPIN_US
+        value: "200"
+
+rating-service:
+  container:
+    env:
+      - name: RATING_SERVICE_SPIN_US
+        value: "200"
+
+compose-review-service:
+  container:
+    env:
+      - name: COMPOSE_REVIEW_SERVICE_SPIN_US
+        value: "200"
+
+review-storage-service:
+  container:
+    env:
+      - name: REVIEW_STORAGE_SERVICE_SPIN_US
+        value: "200"
+
+user-review-service:
+  container:
+    env:
+      - name: USER_REVIEW_SERVICE_SPIN_US
+        value: "200"
+
+movie-review-service:
+  container:
+    env:
+      - name: MOVIE_REVIEW_SERVICE_SPIN_US
+        value: "200"
+
+movie-info-service:
+  container:
+    env:
+      - name: MOVIE_INFO_SERVICE_SPIN_US
+        value: "200"
+
+cast-info-service:
+  container:
+    env:
+      - name: CAST_INFO_SERVICE_SPIN_US
+        value: "200"
+
+plot-service:
+  container:
+    env:
+      - name: PLOT_SERVICE_SPIN_US
+        value: "200"

@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  text-service:
+    environment:
+      TEXT_SERVICE_SPIN_US: "0"
+
+  user-service:
+    environment:
+      USER_SERVICE_SPIN_US: "0"
+
+  media-service:
+    environment:
+      MEDIA_SERVICE_SPIN_US: "0"
+
+  unique-id-service:
+    environment:
+      UNIQUE_ID_SERVICE_SPIN_US: "0"
+
+  url-shorten-service:
+    environment:
+      URL_SHORTEN_SERVICE_SPIN_US: "0"
+
+  user-mention-service:
+    environment:
+      USER_MENTION_SERVICE_SPIN_US: "0"

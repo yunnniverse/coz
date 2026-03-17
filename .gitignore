@@ -35,3 +35,10 @@ build/
 viewer/node_modules
 rust/Cargo.lock
 rust/target
+
+# Local mcoz development artifacts
+scripts/__pycache__/
+evaluation/**/__pycache__/
+*.pyc
+mcoz_gate
+target_detector/**/.venv/

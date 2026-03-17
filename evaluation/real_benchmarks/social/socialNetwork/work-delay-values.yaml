@@ -1,0 +1,35 @@
+text-service:
+  container:
+    env:
+      - name: TEXT_SERVICE_SPIN_US
+        value: "0"
+
+user-service:
+  container:
+    env:
+      - name: USER_SERVICE_SPIN_US
+        value: "0"
+
+media-service:
+  container:
+    env:
+      - name: MEDIA_SERVICE_SPIN_US
+        value: "0"
+
+unique-id-service:
+  container:
+    env:
+      - name: UNIQUE_ID_SERVICE_SPIN_US
+        value: "0"
+
+url-shorten-service:
+  container:
+    env:
+      - name: URL_SHORTEN_SERVICE_SPIN_US
+        value: "0"
+
+user-mention-service:
+  container:
+    env:
+      - name: USER_MENTION_SERVICE_SPIN_US
+        value: "0"

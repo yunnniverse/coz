@@ -10,8 +10,8 @@ metadata:
   name: coz-pod-reader
 rules:
   - apiGroups: [""]
-    resources: ["pods", "configmaps"]
-    verbs: ["get", "list", "watch", "create", "update", "patch"]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
   - apiGroups: ["example.com"]
     resources: ["globaldelays"]
     verbs: ["get", "list", "watch", "update", "patch"]

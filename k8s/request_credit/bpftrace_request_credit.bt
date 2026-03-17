@@ -1,0 +1,32 @@
+/*
+ * Usage:
+ *   TARGET_CGID=$(curl -s http://coz-control.mcoz-system.svc.cluster.local:19091/status | jq -r '.daemon.payload.cgroups[0].cgroup_id')
+ *   sudo bpftrace -D TARGET_CGID=${TARGET_CGID} k8s/request_credit/bpftrace_request_credit.bt
+ */
+
+#ifndef TARGET_CGID
+#define TARGET_CGID 0
+#endif
+
+tracepoint:raw_syscalls:sys_enter
+/args->id == 449/
+{
+  @sys449_calls = count();
+}
+
+tracepoint:syscalls:sys_enter_recvfrom
+/cgroup == TARGET_CGID/
+{
+  @recvfrom_hits = count();
+}
+
+tracepoint:syscalls:sys_enter_recvmsg
+/cgroup == TARGET_CGID/
+{
+  @recvmsg_hits = count();
+}
+
+interval:s:5
+{
+  printf("sys449=%d recvfrom=%d recvmsg=%d\n", @sys449_calls, @recvfrom_hits, @recvmsg_hits);
+}
