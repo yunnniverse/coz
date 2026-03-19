@@ -1,0 +1,159 @@
+global:
+  imagePullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 128Mi
+
+compose-post-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+home-timeline-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+media-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+post-storage-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+social-graph-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+text-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+unique-id-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+url-shorten-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+user-mention-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+user-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+user-timeline-service:
+  container:
+    image: yunniverse/social-network-microservices
+    imageVersion: current
+
+media-mongodb:
+  container:
+    volumeMounts:
+      - name: mongo-data
+        mountPath: /data/db
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+  volumes:
+    - name: mongo-data
+      emptyDir:
+        medium: Memory
+
+post-storage-mongodb:
+  container:
+    volumeMounts:
+      - name: mongo-data
+        mountPath: /data/db
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+  volumes:
+    - name: mongo-data
+      emptyDir:
+        medium: Memory
+
+social-graph-mongodb:
+  container:
+    volumeMounts:
+      - name: mongo-data
+        mountPath: /data/db
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+  volumes:
+    - name: mongo-data
+      emptyDir:
+        medium: Memory
+
+url-shorten-mongodb:
+  container:
+    volumeMounts:
+      - name: mongo-data
+        mountPath: /data/db
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+  volumes:
+    - name: mongo-data
+      emptyDir:
+        medium: Memory
+
+user-mongodb:
+  container:
+    volumeMounts:
+      - name: mongo-data
+        mountPath: /data/db
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+  volumes:
+    - name: mongo-data
+      emptyDir:
+        medium: Memory
+
+user-timeline-mongodb:
+  container:
+    volumeMounts:
+      - name: mongo-data
+        mountPath: /data/db
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 1Gi
+  volumes:
+    - name: mongo-data
+      emptyDir:
+        medium: Memory

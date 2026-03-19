@@ -1,0 +1,133 @@
+global:
+  imagePullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 128Mi
+  nodeSelector:
+    kubernetes.io/hostname: yunni-desktop
+
+compose-post-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+
+home-timeline-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+
+post-storage-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+
+social-graph-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+
+text-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+    env:
+      - name: TEXT_SERVICE_SPIN_US
+        value: "0"
+
+unique-id-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+    env:
+      - name: UNIQUE_ID_SERVICE_SPIN_US
+        value: "5000"
+
+url-shorten-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+    env:
+      - name: URL_SHORTEN_SERVICE_SPIN_US
+        value: "0"
+
+user-mention-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+    env:
+      - name: USER_MENTION_SERVICE_SPIN_US
+        value: "0"
+
+user-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+    env:
+      - name: USER_SERVICE_SPIN_US
+        value: "0"
+
+user-timeline-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+
+media-service:
+  container:
+    image: deathstarbench/social-network-microservices
+    imageVersion: latest
+    env:
+      - name: MEDIA_SERVICE_SPIN_US
+        value: "0"
+
+jaeger:
+  container:
+    image: jaegertracing/all-in-one
+    imageVersion: "1.6"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+
+nginx-thrift:
+  container:
+    image: yg397/openresty-thrift
+    imageVersion: xenial
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 128Mi
+  initContainer:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+
+media-frontend:
+  container:
+    image: yg397/media-frontend
+    imageVersion: xenial
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        memory: 128Mi
+  initContainer:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
